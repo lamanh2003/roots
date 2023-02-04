@@ -22,5 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   dataNodeType: 0
-  lineColor: 0
-  childNodes: []
+  lineColor: 2
+  childNodes:
+  - {fileID: 11400000, guid: 70cc3f9ee0505fc45b1a06a00523be6b, type: 2}
+  - {fileID: 11400000, guid: 0063674fb4d27aa458fbfc15df494f18, type: 2}

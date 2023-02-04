@@ -117,6 +117,7 @@ namespace Utilities
             // SIMULATION
             for (int i = 1; i < segmentLength; i++)
             {
+                Debug.Log("Rop obj : " + gameObject.name);
                 RopeSegment firstSegment = ropeSegments[i];
                 Vector2 velocity = firstSegment.posNow - firstSegment.posOld;
                 firstSegment.posOld = firstSegment.posNow;

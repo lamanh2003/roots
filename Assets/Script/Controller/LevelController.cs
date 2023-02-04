@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour
     public int level;
     public void Init()
     {
+        Debug.Log("Level " + level + " init");
         Create(rootData,GamePlayController.Singleton.nodeController.rootNode);
         
         void Create(Data_Node dNow,Node nNow)
