@@ -18,6 +18,10 @@ public class DrawPoint : MonoBehaviour
     {
         trans = transform;
     }
+    public void Init()
+    {
+        StopDraw();
+    }
 
     // Update is called once per frame
     void Update()

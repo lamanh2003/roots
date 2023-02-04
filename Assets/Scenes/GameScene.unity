@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 6118399915670607318, guid: c1ec81c8d46ad2d479397d77725d71c4, type: 3}
+  listDrawNodes: []
 --- !u!4 &849749870
 Transform:
   m_ObjectHideFlags: 0
@@ -247,6 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53343e9a0e0b467fa28c9126aae7cbd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  highlightMaterial: {fileID: 0}
   col: {fileID: 2660991706594750157}
   childNode: []
   angle: 0
@@ -372,6 +375,10 @@ PrefabInstance:
     - target: {fileID: 2984515715394328229, guid: 0aaa8c8ee6d6a524684c107996c91eee, type: 3}
       propertyPath: m_Name
       value: DrawController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984515717236317715, guid: 0aaa8c8ee6d6a524684c107996c91eee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2984515717236317717, guid: 0aaa8c8ee6d6a524684c107996c91eee, type: 3}
       propertyPath: m_SleepingMode
