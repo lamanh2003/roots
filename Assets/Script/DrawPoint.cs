@@ -39,7 +39,6 @@ public class DrawPoint : MonoBehaviour
     public void StartDraw()
     {
         transform.gameObject.SetActive(true);
-
         GamePlayController.Singleton.nodeController.listDrawNodes.Clear();
 
         rippleFx.Play();
@@ -47,7 +46,6 @@ public class DrawPoint : MonoBehaviour
     }
     public void StopDraw()
     {
-
         GamePlayController.Singleton.nodeController.UnHighlightAll();
         if (GamePlayController.Singleton.nodeController.CheckTurn())
         {

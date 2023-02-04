@@ -17,10 +17,8 @@ public class DrawController : MonoBehaviour
     void Update()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (isDrawing)
-        {
-            drawPoint.SetPosition(new Vector3(mousePosition.x, mousePosition.y, 0f));
-        }
+        drawPoint.SetPosition(new Vector3(mousePosition.x, mousePosition.y, 0f));
+        
         if (Input.GetMouseButtonDown(0))
         {
             GameController.Singleton.soundController.PlayClickSound();

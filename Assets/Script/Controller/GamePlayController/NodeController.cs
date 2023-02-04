@@ -18,7 +18,7 @@ namespace Controller
 
         #endregion
         public List<Node> listDrawNodes;
-        private int _id;
+        public int _id;
 
         [FormerlySerializedAs("_rootNode")] public Node rootNode;
 
@@ -148,6 +148,8 @@ namespace Controller
             var lTmpRoot = CheckMatch3(rootNode);
             if (lTmpRoot.Count >= 4)
             {
+                GamePlayController.Singleton.point += lTmpRoot.Count;
+                GamePlayController.Singleton.pointTMP.SetText( GamePlayController.Singleton.point.ToString());
                 match3CheckSave.AddRange(lTmpRoot);
                 onCheckAll += () => ClaimNodeList(lTmpRoot);
             }

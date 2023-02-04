@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace Controller
 {
@@ -9,6 +10,8 @@ namespace Controller
         public NodeController nodeController;
         public LevelController levelController;
         public GameResources gameResources;
+        public int point;
+        public TextMeshProUGUI pointTMP;
         
         private void Awake()
         {
@@ -27,6 +30,7 @@ namespace Controller
 
         private void Init()
         {
+            point = 0;
             nodeController.Init();
             levelController.Init();
         }
