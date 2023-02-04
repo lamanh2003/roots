@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 namespace Controller
 {
     public class GameController: MonoBehaviour
@@ -13,9 +13,11 @@ namespace Controller
             {
                 DestroyImmediate(this);
             }
-            Init();
             Singleton = this;
+            Init();
         }
+
+        public SoundController soundController;
 
         private void Start()
         {
@@ -24,7 +26,9 @@ namespace Controller
 
         private void Init()
         {
-            
+            DontDestroyOnLoad(this);
+
+            SceneManager.LoadSceneAsync("MainMenu");
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Controller;
 public class DrawController : MonoBehaviour
 {
     public DrawPoint drawPoint;
@@ -11,17 +11,20 @@ public class DrawController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        drawPoint.Init();
     }
 
     // Update is called once per frame
     void Update()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        drawPoint.SetPosition(new Vector3(mousePosition.x, mousePosition.y, 0f));
-
+        if (isDrawing)
+        {
+            drawPoint.SetPosition(new Vector3(mousePosition.x, mousePosition.y, 0f));
+            drawPoint.DrawLine();
+        }
         if (Input.GetMouseButtonDown(0))
         {
+            GameController.Singleton.soundController.PlayClickSound();
             isDrawing = true;
             drawPoint.StartDraw();
         }

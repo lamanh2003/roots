@@ -7,19 +7,18 @@ using UnityEngine.UI;
 using Base;
 public class DrawPoint : MonoBehaviour
 {
+    public AudioClip touchLineSfx;
+    public LineRenderer line;
     public TrailRenderer trail;
     public SpriteRenderer drawGfx;
     public ParticleSystem rippleFx;
     public Color color;
 
-    private Transform trans;
+    private List<Vector3> points;
     // Start is called before the first frame update
     void Start()
     {
-        trans = transform;
-    }
-    public void Init()
-    {
+        points = new List<Vector3>();
         StopDraw();
     }
 
@@ -31,18 +30,27 @@ public class DrawPoint : MonoBehaviour
     }
     public void SetPosition(Vector3 _position)
     {
-        trans.position = _position;
+        transform.position = _position;
+    }
+    public void DrawLine()
+    {
+        line.SetPosition(line.positionCount - 1, transform.position);
     }
     public void StartDraw()
     {
+        transform.gameObject.SetActive(true);
+
+        line.positionCount = 0;
+
         GamePlayController.Singleton.nodeController.listDrawNodes.Clear();
 
         rippleFx.Play();
-        trans.gameObject.SetActive(true);
         UpdateColor(Node.LineColor.Pink);
     }
     public void StopDraw()
     {
+        line.positionCount = 0;
+
         GamePlayController.Singleton.nodeController.UnHighlightAll();
         if (GamePlayController.Singleton.nodeController.CheckTurn())
         {
@@ -52,8 +60,7 @@ public class DrawPoint : MonoBehaviour
             }
             GamePlayController.Singleton.nodeController.ClaimAll();
         }
-        trans.gameObject.SetActive(false);
-        
+        transform.gameObject.SetActive(false);
     }
     private void UpdateColor(Node.LineColor _color)
     {
@@ -68,14 +75,32 @@ public class DrawPoint : MonoBehaviour
 
         drawGfx.color = color;
         trail.colorGradient = gradient;
+        line.colorGradient = gradient;
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag != "rootNode")
         {
-            collision.GetComponent<Node>().Highlight();
-            GamePlayController.Singleton.nodeController.listDrawNodes.Add(collision.GetComponent<Node>());
+            Node _node = collision.GetComponent<Node>();
+            if(_node.isConnected)
+            {
+                return;
+            }
+            if(points.Count == 0)
+            {
+                line.positionCount = 2;
+            }
+            else
+            {
+                line.positionCount += 1;
+            }
+            _node.isConnected = true;
+            points.Add(_node.GetCenterPoint());
+            line.SetPosition(line.positionCount - 2, _node.GetCenterPoint());
+            GameController.Singleton.soundController.PlaySound(touchLineSfx);
+            _node.Highlight();
+            GamePlayController.Singleton.nodeController.listDrawNodes.Add(_node);
         }
     }
 }

@@ -20,6 +20,8 @@ namespace Base
         private LineColor _lineColor;
         public int nodeHeight;
 
+        [HideInInspector] public bool isConnected;
+
         private float orignalWidth;
         public int ChildCount => childNode.Count;
 
@@ -40,7 +42,15 @@ namespace Base
                 }
             }
         }
-
+        public Vector2 GetCenterPoint()
+        {
+            Vector2 result = Vector2.zero;
+            if(rope.lineRenderer.positionCount > 1)
+            {
+                result = rope.lineRenderer.GetPosition((int)(rope.lineRenderer.positionCount / 2));
+            }
+            return result;
+        }
         public int Deep
         {
             get
@@ -132,6 +142,8 @@ namespace Base
         }
         public void Highlight()
         {
+            isConnected = true;
+
             orignalWidth = rope.lineRenderer.startWidth;
             rope.lineRenderer.material = highlightMaterial;
 
@@ -145,6 +157,7 @@ namespace Base
         }
         public void UnHighlight()
         {
+            isConnected = false;
             rope.lineRenderer.material = normalMaterial;
 
             AnimationCurve curve = new AnimationCurve();

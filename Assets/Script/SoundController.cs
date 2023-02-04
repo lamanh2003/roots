@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
-    
+    public AudioSource audioSource;
+    public AudioClip clickSound;
     // Start is called before the first frame update
-    void Start()
+    
+    public void PlayClickSound()
     {
-        
+        audioSource.PlayOneShot(clickSound);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void PlaySound(AudioClip clip)
     {
-        
+        audioSource.PlayOneShot(clip);
     }
 }

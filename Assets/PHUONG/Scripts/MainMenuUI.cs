@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
+using Controller;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -60,12 +62,14 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnClickPlayButton()
     {
-        
+        GameController.Singleton.soundController.PlayClickSound();
+        SceneManager.LoadSceneAsync("GameScene");
     }
 
     private void OnClickQuitButton()
     {
-        Application.Quit();
+            GameController.Singleton.soundController.PlayClickSound();
+            Application.Quit();
     }
 
     public void OnPlayButtonMouseEnter()
