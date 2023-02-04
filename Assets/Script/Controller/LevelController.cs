@@ -9,6 +9,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public Data_Node rootData;
+    public int growNum;
     public int level;
     public void Init()
     {

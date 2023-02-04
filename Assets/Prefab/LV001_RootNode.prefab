@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 2856008699575325422}
   parent: {fileID: 0}
   childNode:
@@ -255,8 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.6309862, y: 1.0897902}
-  EndPoint: {x: -2.6309862, y: 1.0897901}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 654073190160977483}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &2856008699575325422
@@ -426,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 0}
   highlightMaterial: {fileID: 0}
+  isSpawnNextTurn: 0
   col: {fileID: 2727434919707546305}
   parent: {fileID: 0}
   childNode:
@@ -616,6 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 63925839026575341}
   parent: {fileID: 0}
   childNode: []
@@ -751,8 +754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.0897902, y: -2.6309862}
-  EndPoint: {x: 1.4724739, y: -3.5548656}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 5409959467324967525}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &63925839026575341
@@ -918,6 +921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 1312101592653052168}
   parent: {fileID: 0}
   childNode:
@@ -1055,8 +1059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.70710677, y: 0.70710677}
-  EndPoint: {x: 1.6309862, y: 1.0897902}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 1512187934426141985}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &1312101592653052168
@@ -1222,6 +1226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 8460595938100081749}
   parent: {fileID: 0}
   childNode:
@@ -1359,8 +1364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.3826836, y: -1.9238794}
-  EndPoint: {x: 0.3826836, y: -2.9238794}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4090056324328595796}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &8460595938100081749
@@ -1524,6 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 8774850771499324410}
   parent: {fileID: 0}
   childNode: []
@@ -1659,8 +1665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.00000004371139, y: 1}
-  EndPoint: {x: 0.3826834, y: 1.9238795}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3001927619496582383}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &8774850771499324410
@@ -1824,6 +1830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 2233564386590214744}
   parent: {fileID: 0}
   childNode: []
@@ -1959,8 +1966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -2.3380933, y: -1.7968968}
-  EndPoint: {x: -2.7207768, y: -2.7207763}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4590554679983779609}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &2233564386590214744
@@ -2124,6 +2131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 1790661778298777851}
   parent: {fileID: 0}
   childNode: []
@@ -2259,8 +2267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.0897902, y: 2.6309862}
-  EndPoint: {x: 1.4724736, y: 3.5548658}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 173374101794638327}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &1790661778298777851
@@ -2424,6 +2432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7865007331462665537}
   parent: {fileID: 0}
   childNode: []
@@ -2559,8 +2568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.7968969, y: 2.338093}
-  EndPoint: {x: 2.1795805, y: 3.2619724}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 6966477586770109048}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7865007331462665537
@@ -2726,6 +2735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 2370451135279871449}
   parent: {fileID: 0}
   childNode:
@@ -2863,8 +2873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.000000011924881, y: -1}
-  EndPoint: {x: 0.3826836, y: -1.9238794}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 6406814344307779778}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &2370451135279871449
@@ -3028,6 +3038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7558965403203198740}
   parent: {fileID: 0}
   childNode:
@@ -3165,8 +3176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.0897902, y: 2.6309865}
-  EndPoint: {x: -2.0136697, y: 3.01367}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 2302965785465481525}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7558965403203198740
@@ -3332,6 +3343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 6774688823215497404}
   parent: {fileID: 0}
   childNode:
@@ -3469,8 +3481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.0897902, y: 1.6309862}
-  EndPoint: {x: 1.7968969, y: 2.338093}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 7876711847350164559}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &6774688823215497404
@@ -3636,6 +3648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 4885799712270764871}
   parent: {fileID: 0}
   childNode:
@@ -3773,8 +3786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: 1, y: 0}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4426207600354390535}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &4885799712270764871
@@ -3940,6 +3953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 4018730132534687859}
   parent: {fileID: 0}
   childNode:
@@ -4077,8 +4091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.0897903, y: -1.6309862}
-  EndPoint: {x: -1.0897903, y: -2.6309862}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4918159495038832575}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &4018730132534687859
@@ -4242,6 +4256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7682091010135268865}
   parent: {fileID: 0}
   childNode: []
@@ -4377,8 +4392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.38268346, y: 2.9238796}
-  EndPoint: {x: -0.76536685, y: 3.8477592}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 8480236230041815770}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7682091010135268865
@@ -4542,6 +4557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7159488058964912828}
   parent: {fileID: 0}
   childNode: []
@@ -4677,8 +4693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.70710677, y: 0.70710677}
-  EndPoint: {x: -1.0897901, y: 1.6309863}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 7116910084636466161}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7159488058964912828
@@ -4842,6 +4858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 6027452873468365509}
   parent: {fileID: 0}
   childNode: []
@@ -4977,8 +4994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.0897903, y: -2.6309862}
-  EndPoint: {x: -0.7071067, y: -3.5548656}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 2490234061930765393}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &6027452873468365509
@@ -5142,6 +5159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 4729897460936802424}
   parent: {fileID: 0}
   childNode: []
@@ -5277,8 +5295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.38268346, y: 2.9238796}
-  EndPoint: {x: -0.000000029802322, y: 3.8477592}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 468304026448114918}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &4729897460936802424
@@ -5442,6 +5460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 4132564978255972573}
   parent: {fileID: 0}
   childNode:
@@ -5579,8 +5598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -2.3380933, y: -1.7968968}
-  EndPoint: {x: -3.261973, y: -2.1795802}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4701186502105409669}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &4132564978255972573
@@ -5744,6 +5763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 2571691072282865693}
   parent: {fileID: 0}
   childNode:
@@ -5880,8 +5900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.7968969, y: 2.338093}
-  EndPoint: {x: 2.7207766, y: 2.7207766}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 760544059210768773}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &2571691072282865693
@@ -6045,6 +6065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7463363644229260061}
   parent: {fileID: 0}
   childNode: []
@@ -6180,8 +6201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 2.6309862, y: -1.0897902}
-  EndPoint: {x: 3.5548658, y: -1.4724736}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3630507396745439430}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7463363644229260061
@@ -6345,6 +6366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 6897709901655144794}
   parent: {fileID: 0}
   childNode: []
@@ -6480,8 +6502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.3826836, y: -2.9238794}
-  EndPoint: {x: 0.000000029802322, y: -3.8477588}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 1802489566886535257}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &6897709901655144794
@@ -6645,6 +6667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 1351752838178862956}
   parent: {fileID: 0}
   childNode: []
@@ -6780,8 +6803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.0897902, y: -2.6309862}
-  EndPoint: {x: 2.0136697, y: -3.0136697}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4898538107802677367}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &1351752838178862956
@@ -6946,6 +6969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7699362363041839437}
   parent: {fileID: 0}
   childNode:
@@ -7082,8 +7106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.38268343, y: 1.9238796}
-  EndPoint: {x: -1.0897902, y: 2.6309865}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3204302970710634126}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7699362363041839437
@@ -7247,6 +7271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3312181482794930281}
   parent: {fileID: 0}
   childNode: []
@@ -7382,8 +7407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.000000011924881, y: -1}
-  EndPoint: {x: -0.38268358, y: -1.9238795}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 1438828340299826022}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3312181482794930281
@@ -7547,6 +7572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 1345216285271207754}
   parent: {fileID: 0}
   childNode: []
@@ -7682,8 +7708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.0897902, y: 2.6309862}
-  EndPoint: {x: 0.7071068, y: 3.5548658}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 5161571871963284225}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &1345216285271207754
@@ -7847,6 +7873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 5925901335166832326}
   parent: {fileID: 0}
   childNode: []
@@ -7982,8 +8009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.3826836, y: -2.9238794}
-  EndPoint: {x: 0.7653672, y: -3.8477588}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3762951350757381594}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &5925901335166832326
@@ -8147,6 +8174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 4325555566973876086}
   parent: {fileID: 0}
   childNode: []
@@ -8282,8 +8310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -2.9238796, y: -0.3826836}
-  EndPoint: {x: -3.8477592, y: -0.00000011920929}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 16329368592807783}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &4325555566973876086
@@ -8449,6 +8477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3606885187772334483}
   parent: {fileID: 0}
   childNode:
@@ -8586,8 +8615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.38268343, y: 1.9238796}
-  EndPoint: {x: -0.38268346, y: 2.9238796}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4183726423992199927}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3606885187772334483
@@ -8753,6 +8782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7922782674260748256}
   parent: {fileID: 0}
   childNode:
@@ -8890,8 +8920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.00000004371139, y: 1}
-  EndPoint: {x: -0.38268343, y: 1.9238796}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 1257858559810251258}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7922782674260748256
@@ -9056,6 +9086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 1344419716649321458}
   parent: {fileID: 0}
   childNode:
@@ -9192,8 +9223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1, y: -0.00000008742278}
-  EndPoint: {x: -1.9238795, y: -0.38268352}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 6518733326795505756}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &1344419716649321458
@@ -9359,6 +9390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 350711070383594230}
   parent: {fileID: 0}
   childNode:
@@ -9496,8 +9528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.9238795, y: -0.38268352}
-  EndPoint: {x: -2.9238796, y: -0.3826836}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3465593324760918424}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &350711070383594230
@@ -9661,6 +9693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 4749694944737355894}
   parent: {fileID: 0}
   childNode: []
@@ -9796,8 +9829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.9238795, y: -0.38268346}
-  EndPoint: {x: 2.9238796, y: -0.38268346}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 531926579207911440}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &4749694944737355894
@@ -9961,6 +9994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 178764141428881529}
   parent: {fileID: 0}
   childNode: []
@@ -10096,8 +10130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.6309862, y: 1.0897902}
-  EndPoint: {x: 2.338093, y: 1.7968969}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 6246465777426462362}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &178764141428881529
@@ -10263,6 +10297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 2175189636045987242}
   parent: {fileID: 0}
   childNode:
@@ -10400,8 +10435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.0897902, y: 1.6309862}
-  EndPoint: {x: 1.0897902, y: 2.6309862}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 1540787419618982422}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &2175189636045987242
@@ -10567,6 +10602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 253689443307976380}
   parent: {fileID: 0}
   childNode:
@@ -10704,8 +10740,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.70710677, y: 0.70710677}
-  EndPoint: {x: -1.6309862, y: 1.0897902}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 7995547605072592173}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &253689443307976380
@@ -10871,6 +10907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 1501740635679508774}
   parent: {fileID: 0}
   childNode:
@@ -11008,8 +11045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.9238795, y: -0.38268346}
-  EndPoint: {x: 2.6309862, y: -1.0897902}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 8292269097627946479}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &1501740635679508774
@@ -11175,6 +11212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3608351450139035325}
   parent: {fileID: 0}
   childNode:
@@ -11312,8 +11350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: -0.00000004371139, y: 1}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 5258117352560549599}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3608351450139035325
@@ -11477,6 +11515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 59778312793796857}
   parent: {fileID: 0}
   childNode: []
@@ -11612,8 +11651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1.6309862, y: 1.0897902}
-  EndPoint: {x: 2.6309862, y: 1.0897902}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 1556398591646011323}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &59778312793796857
@@ -11779,6 +11818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 6144539348046895460}
   parent: {fileID: 0}
   childNode:
@@ -11916,8 +11956,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: -0.70710677, y: 0.70710677}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 289792269621661919}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &6144539348046895460
@@ -12083,6 +12123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 4070028793435652344}
   parent: {fileID: 0}
   childNode:
@@ -12220,8 +12261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.70710677, y: 0.70710677}
-  EndPoint: {x: 1.0897902, y: 1.6309862}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3677338154281393131}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &4070028793435652344
@@ -12385,6 +12426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 8271875501459991884}
   parent: {fileID: 0}
   childNode: []
@@ -12520,8 +12562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.6309862, y: 1.0897902}
-  EndPoint: {x: -2.338093, y: 1.7968969}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 5396183092105471433}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &8271875501459991884
@@ -12687,6 +12729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 2553999677457631734}
   parent: {fileID: 0}
   childNode:
@@ -12824,8 +12867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.7071068, y: -0.7071067}
-  EndPoint: {x: -1.6309863, y: -1.0897901}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 2103092251951949378}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &2553999677457631734
@@ -12989,6 +13032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 454464002539284360}
   parent: {fileID: 0}
   childNode: []
@@ -13124,8 +13168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.0897903, y: -2.6309862}
-  EndPoint: {x: -1.4724739, y: -3.5548658}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 7296642851113713476}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &454464002539284360
@@ -13289,6 +13333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 847854096252696909}
   parent: {fileID: 0}
   childNode: []
@@ -13424,8 +13469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -2.9238796, y: -0.3826836}
-  EndPoint: {x: -3.8477592, y: -0.76536703}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3132901122136034694}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &847854096252696909
@@ -13591,6 +13636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 6448469165021713967}
   parent: {fileID: 0}
   childNode:
@@ -13728,8 +13774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: -0.7071068, y: -0.7071067}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 6176449713955361304}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &6448469165021713967
@@ -13895,6 +13941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7542744909230410751}
   parent: {fileID: 0}
   childNode:
@@ -14032,8 +14079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: 0.000000011924881, y: -1}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 3161414552970489637}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7542744909230410751
@@ -14199,6 +14246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 5569394021610768139}
   parent: {fileID: 0}
   childNode:
@@ -14336,8 +14384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.6309863, y: -1.0897901}
-  EndPoint: {x: -2.3380933, y: -1.7968968}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 2008560836741579868}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &5569394021610768139
@@ -14503,6 +14551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 1009663131758945084}
   parent: {fileID: 0}
   childNode:
@@ -14640,8 +14689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1, y: 0}
-  EndPoint: {x: 1.9238795, y: -0.38268346}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 5485044539526236103}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &1009663131758945084
@@ -14807,6 +14856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3175913116489167446}
   parent: {fileID: 0}
   childNode:
@@ -14944,8 +14994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0.3826836, y: -1.9238794}
-  EndPoint: {x: 1.0897902, y: -2.6309862}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 330012407246131753}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3175913116489167446
@@ -15109,6 +15159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3187093426121000044}
   parent: {fileID: 0}
   childNode: []
@@ -15244,8 +15295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 2.6309862, y: -1.0897902}
-  EndPoint: {x: 3.0136697, y: -2.0136697}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 6601983051570738888}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3187093426121000044
@@ -15409,6 +15460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 7475918108041440378}
   parent: {fileID: 0}
   childNode: []
@@ -15544,8 +15596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -2.6309862, y: 1.0897901}
-  EndPoint: {x: -3.5548658, y: 0.7071067}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 1130346670454320321}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &7475918108041440378
@@ -15709,6 +15761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 2828901204950635507}
   parent: {fileID: 0}
   childNode: []
@@ -15844,8 +15897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 1, y: 0}
-  EndPoint: {x: 1.9238795, y: 0.38268346}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 4687410994671418487}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &2828901204950635507
@@ -16011,6 +16064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3483395865089708020}
   parent: {fileID: 0}
   childNode:
@@ -16148,8 +16202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: -1, y: -0.00000008742278}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 8442390819506403061}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3483395865089708020
@@ -16315,6 +16369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3670864689750636342}
   parent: {fileID: 0}
   childNode:
@@ -16452,8 +16507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: 0.70710677, y: 0.70710677}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 472454570961953478}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3670864689750636342
@@ -16618,6 +16673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3131310414504338229}
   parent: {fileID: 0}
   childNode:
@@ -16754,8 +16810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -0.7071068, y: -0.7071067}
-  EndPoint: {x: -1.0897903, y: -1.6309862}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 5340236993267836662}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3131310414504338229
@@ -16919,6 +16975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 3906366793375023970}
   parent: {fileID: 0}
   childNode: []
@@ -17054,8 +17111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1.6309863, y: -1.0897901}
-  EndPoint: {x: -2.6309862, y: -1.0897902}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 8222703815487391533}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &3906366793375023970
@@ -17219,6 +17276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
+  isSpawnNextTurn: 0
   col: {fileID: 6094935164575013809}
   parent: {fileID: 0}
   childNode: []
@@ -17354,8 +17412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: -1, y: -0.00000008742278}
-  EndPoint: {x: -1.9238795, y: 0.3826834}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 8812666740275701091}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &6094935164575013809

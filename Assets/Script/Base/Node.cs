@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Controller;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using Utilities;
 
@@ -12,6 +13,8 @@ namespace Base
     {
         public Material normalMaterial;
         public Material highlightMaterial;
+
+        public bool isSpawnNextTurn;
 
         public EdgeCollider2D col;
         public Node parent;
@@ -31,6 +34,7 @@ namespace Base
                 List<Node> rt = new List<Node>();
                 Find(this);
                 return rt;
+
                 void Find(Node cur)
                 {
                     foreach (var nTmp in cur.childNode)
@@ -39,6 +43,14 @@ namespace Base
                         Find(nTmp);
                     }
                 }
+            }
+        }
+
+        public List<Node> AllFarestNode
+        {
+            get
+            {
+                return AllChild.Where(nTmp => nTmp.ChildCount == 0).ToList();
             }
         }
 
@@ -55,6 +67,7 @@ namespace Base
                     {
                         rt = Mathf.Max(rt, Find(nTmp));
                     }
+
                     return rt + 1;
                 }
             }
@@ -72,14 +85,13 @@ namespace Base
 
         private void Awake()
         {
-            childNode = new List<Node>();
+            
         }
 
         public void ClaimNode()
         {
-            
         }
-        
+
         public void DestroyNode(Node parentNode)
         {
             parentNode.childNode.Remove(this);
@@ -90,40 +102,41 @@ namespace Base
         {
             transform.SetParent(parentNode.transform);
             oldParentNode.childNode.Remove(this);
-
         }
 
         private void MoveTo(Vector2 locateDiff, float angleDiff)
         {
-            
         }
 
         private void DestroyAnim()
         {
             var allChild = AllChild;
             Debug.Log(allChild.Count);
-            Fade(0.6f,()=>Destroy(gameObject));
+            Fade(0.6f, () => Destroy(gameObject));
             foreach (var nTmp in allChild)
             {
                 nTmp.Fade(0.6f);
             }
-
         }
 
-        private void Fade(float time,Action onComplete = null)
+        private void Fade(float time, Action onComplete = null)
         {
-            GetComponent<SpriteRenderer>().DOFade(0f, time).OnComplete(()=>onComplete?.Invoke());
+            GetComponent<SpriteRenderer>().DOFade(0f, time).OnComplete(() => onComplete?.Invoke());
             rope.Fade(time);
         }
-        
+
         [Serializable]
         public enum LineColor
         {
             Any = 0,
             Pink = 1,
             Green = 2,
-            Blue = 3
+            Blue = 3,
+            Purple = 4,
+            Orange = 5,
+            Random = 6,
         }
+
         public void SetCollider(Vector2 endPoint)
         {
             List<Vector2> points = new List<Vector2>();
@@ -131,6 +144,7 @@ namespace Base
             points.Add(endPoint);
             col.SetPoints(points);
         }
+
         public void Highlight()
         {
             orignalWidth = rope.lineRenderer.startWidth;
@@ -144,6 +158,7 @@ namespace Base
             rope.lineRenderer.widthCurve = curve;
             rope.lineRenderer.widthMultiplier = orignalWidth;
         }
+
         public void UnHighlight()
         {
             rope.lineRenderer.material = normalMaterial;
@@ -170,6 +185,10 @@ namespace Base
                     return new Color(174f / 255f, 207f / 255f, 59f / 255f);
                 case Node.LineColor.Blue:
                     return new Color(55f / 255f, 147f / 255f, 184f / 255f);
+                case Node.LineColor.Purple:
+                    return new Color(156f / 255f, 102f / 255f, 196f / 255f);
+                case Node.LineColor.Orange:
+                    return new Color(247f / 255f, 147f / 255f, 30f / 255f);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(lineColor), lineColor, null);
             }
@@ -179,15 +198,16 @@ namespace Base
 
         public static Node.LineColor NextLineColor(this Node.LineColor lineColor)
         {
-            if (lineColor == Node.LineColor.Blue)
+            if (lineColor == Node.LineColor.Orange)
                 return Node.LineColor.Pink;
 
             return (Node.LineColor)((int)lineColor + 1);
         }
+
         public static Node.LineColor PreviousLineColor(this Node.LineColor lineColor)
         {
             if (lineColor == Node.LineColor.Pink)
-                return Node.LineColor.Blue;
+                return Node.LineColor.Orange;
 
             return (Node.LineColor)((int)lineColor - 1);
         }
@@ -206,8 +226,14 @@ namespace Base
         {
             if (color == new Color(234f / 255f, 77f / 255f, 103f / 255f))
                 return Node.LineColor.Pink;
-            else if (color == new Color(174f / 255f, 207f / 255f, 59f / 255f)) return Node.LineColor.Green;
-            return Node.LineColor.Blue;
+            if (color == new Color(174f / 255f, 207f / 255f, 59f / 255f)) return Node.LineColor.Green;
+            if (color == new Color(55f / 255f, 147f / 255f, 184f / 255f))
+                return Node.LineColor.Blue;
+
+            if (color == new Color(156f / 255f, 102f / 255f, 196f / 255f))
+                return Node.LineColor.Purple;
+
+            return Node.LineColor.Orange;
         }
     }
 }

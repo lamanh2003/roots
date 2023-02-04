@@ -119,9 +119,12 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: 6ecfdc045425374459afcbf4f9ecc2d4, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 584b6b6b47cd49f4a85596b6be765717, type: 2}
   col: {fileID: 8071947609816959161}
+  parent: {fileID: 0}
   childNode: []
   angle: 0
   rope: {fileID: 6486159569636209327}
+  _lineColor: 0
+  nodeHeight: 0
 --- !u!120 &3890082624440921138
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -231,8 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445467c53083304a9ded626de12bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint: {x: 0, y: 0}
-  EndPoint: {x: 0, y: 0}
+  StartPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
   lineRenderer: {fileID: 0}
   defaultMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!68 &8071947609816959161
