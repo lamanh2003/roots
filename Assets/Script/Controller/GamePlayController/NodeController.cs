@@ -38,13 +38,16 @@ namespace Controller
         private void Start()
         {
             _rootNode = GameObject.FindGameObjectWithTag("rootNode").GetComponent<Node>();
+            AddNode(_rootNode,true,Node.LineColor.Pink);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
-            AddNode(_rootNode);
+            AddNode(_rootNode.childNode[0],true,Node.LineColor.Pink);
+            AddNode(_rootNode.childNode[0].childNode[0],true,Node.LineColor.Pink);
+
         }
 
         public void AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
@@ -90,8 +93,9 @@ namespace Controller
             instance.rope.Init(parentPosition, desLocate, lineColor);
 
 
-            Vector2 endPoint = (parentNode.transform.localPosition - instance.transform.localPosition);
-            Vector2 realEndPoint = new Vector2(endPoint.x / instance.transform.localScale.x, endPoint.y / instance.transform.localScale.y);
+            var iTransform = instance.transform;
+            Vector2 endPoint = (parentNode.transform.localPosition - iTransform.localPosition);
+            Vector2 realEndPoint = new Vector2(endPoint.x / iTransform.localScale.x, endPoint.y / iTransform.localScale.y);
 
             instance.SetCollider(realEndPoint);
         }
@@ -109,21 +113,23 @@ namespace Controller
         public void CheckAll()
         {
             match3CheckSave.Clear();
-            bool isValid = false;
             Action onCheckAll = default;
+            var lTmpRoot = CheckMatch3(_rootNode);
+            if (lTmpRoot.Count>=3)
+            {
+                match3CheckSave.AddRange(lTmpRoot);
+                onCheckAll += () => ClaimNodeList(lTmpRoot);
+            }
             CheckNext(_rootNode);
             onCheckAll?.Invoke();
-            if (isValid) CheckAll();
 
             void CheckNext(Node currentNode)
             {
                 foreach (var nTmp in currentNode.childNode)
                 {
                     var lTmp = CheckMatch3(nTmp);
-                    Debug.Log(lTmp.Count);
                     if (lTmp.Count >= 3)
                     {
-                        isValid = true;
                         match3CheckSave.AddRange(lTmp);
                         onCheckAll += () => ClaimNodeList(lTmp);
                     }
@@ -142,10 +148,8 @@ namespace Controller
             {
                 return res;
             }
-
             foreach (var nTmp in checkNode.childNode.Except(match3CheckSave))
             {
-                Debug.Log("RUN");
                 if (nTmp.lineColor.ColorEquals(checkNode.lineColor))
                 {
                     var tmpM3 = CheckMatch3(nTmp);
@@ -157,6 +161,7 @@ namespace Controller
                     }
                 }
             }
+            Debug.Log(checkNode.name + " " + res.Count);
 
             return res;
         }
