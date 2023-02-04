@@ -7,6 +7,8 @@ namespace Controller
     {
         public static GameController Singleton;
 
+        public UseProfile useProfile;
+        
         private void Awake()
         {
             if (Singleton != null)

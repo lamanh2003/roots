@@ -8,6 +8,7 @@ namespace Controller
 
         public NodeController nodeController;
         public LevelController levelController;
+        public GameResources gameResources;
         
         private void Awake()
         {

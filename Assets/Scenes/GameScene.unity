@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeController: {fileID: 849749869}
   levelController: {fileID: 2095663554}
+  gameResources: {fileID: 0}
 --- !u!4 &923604750
 Transform:
   m_ObjectHideFlags: 0
@@ -216,6 +217,7 @@ Transform:
   m_Children:
   - {fileID: 849749870}
   - {fileID: 2095663555}
+  - {fileID: 1793936498}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,6 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalMaterial: {fileID: 0}
   highlightMaterial: {fileID: 0}
+  isSpawnNextTurn: 0
   col: {fileID: 2660991706594750157}
   parent: {fileID: 0}
   childNode: []
@@ -594,6 +597,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1793936497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1793936498}
+  - component: {fileID: 1793936499}
+  m_Layer: 0
+  m_Name: GameResources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1793936498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793936497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 923604750}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1793936499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793936497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bd4e245e3e7464c81642946b053831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelData:
+  - level: 0
+    rootData: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
+    colorCycle: 010000000200000003000000
 --- !u!1 &2095663553
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootData: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
+  growNum: 3
   level: 0
 --- !u!4 &2095663555
 Transform:

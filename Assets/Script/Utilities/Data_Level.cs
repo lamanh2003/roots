@@ -1,10 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Base;
 
 [Serializable]
 public class Data_Level
 {
-    public List<Data_Node> firstLevelNodes;
+    public int level;
+    public Data_Node rootData;
+    public List<Node.LineColor> colorCycle;
 }
