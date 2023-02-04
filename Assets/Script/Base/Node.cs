@@ -9,6 +9,7 @@ namespace Base
 {
     public class Node : MonoBehaviour
     {
+        public EdgeCollider2D col;
         public List<Node> nextNode;
         public RopeBridge rope;
         private LineColor _lineColor;
@@ -35,6 +36,13 @@ namespace Base
             Green = 2,
             Blue = 3
         }
+
+        public void SetCollider(Vector2 endPoint)
+        {
+            col.points[0] = Vector2.zero;
+            col.points[1] = endPoint;
+        }
+
     }
 
     public static class LineColorExtension

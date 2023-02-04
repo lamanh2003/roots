@@ -17,6 +17,7 @@ namespace Utilities
 
         private LineRenderer lineRenderer;
         private List<RopeSegment> ropeSegments;
+        private List<Vector2> colPoints;
         private float ropeSegLen = 0.0025f;
         private int segmentLength = 40;
         private float lineWidth = 0.1f;
@@ -85,16 +86,20 @@ namespace Utilities
             EndPoint = endPoint;
             dirVec = (EndPoint - StartPoint).normalized;
             ropeSegments = new List<RopeSegment>();
+            colPoints = new List<Vector2>();
             StartCoroutine(ChangeGravityForce());
             lineRenderer.startColor = lineColor.ToColor();
             lineRenderer.endColor = lineRenderer.startColor;
             Vector3 ropeStartPoint = StartPoint;
+            
 
             for (int i = 0; i < segmentLength; i++)
             {
                 ropeSegments.Add(new RopeSegment(ropeStartPoint));
+                colPoints.Add(ropeStartPoint);
                 ropeStartPoint.y -= ropeSegLen;
             }
+            //col.SetPoints(colPoints);
         }
 
 
@@ -204,6 +209,7 @@ namespace Utilities
             lineRenderer.positionCount = ropePositions.Length;
             lineRenderer.SetPositions(ropePositions);
         }
+
 
         public struct RopeSegment
         {

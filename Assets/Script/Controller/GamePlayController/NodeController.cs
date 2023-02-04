@@ -40,8 +40,15 @@ namespace Controller
             parentNode.nextNode.Add(instance);
             instance.lineColor = lineColor;
             instance.rope.Init(parentPosition,desLocate,lineColor);
-        }
 
+            Vector2 endPoint = (parentNode.transform.position - instance.transform.position);
+            Vector2 realEndPoint = new Vector2(endPoint.x / instance.transform.localScale.x, endPoint.y / instance.transform.localScale.y);
+            Debug.LogError(endPoint.x);
+            Debug.LogError(instance.transform.localScale.x);
+            Debug.LogError("test " + (realEndPoint));
+            instance.SetCollider(realEndPoint);
+        }
+       
         public void ChangeNodeColor(Node target)
         {
             ChangeNodeColor(target, target.lineColor.NextLineColor());
