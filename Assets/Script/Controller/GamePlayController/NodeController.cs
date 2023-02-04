@@ -100,9 +100,11 @@ namespace Controller
         public void CheckAll()
         {
             match3CheckSave.Clear();
+            bool isValid = false;
             Action onCheckAll = default;
             CheckNext(_rootNode);
             onCheckAll?.Invoke();
+            if (isValid) CheckAll();
 
             void CheckNext(Node currentNode)
             {
@@ -111,6 +113,7 @@ namespace Controller
                     var lTmp = CheckMatch3(nTmp);
                     if (lTmp.Count >= 3)
                     {
+                        isValid = true;
                         match3CheckSave.AddRange(lTmp);
                         onCheckAll += () => ClaimNodeList(lTmp);
                     }
@@ -154,7 +157,7 @@ namespace Controller
                 nodeList[i].ClaimNode();
                 if (i > 0)
                 {
-                    //nodeList[i].DestroyNode(nodeList[0]);
+                    nodeList[i].DestroyNode(nodeList[0],nodeList);
                 }
             }
         }

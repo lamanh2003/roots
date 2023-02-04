@@ -76,26 +76,24 @@ namespace Base
                     longestNode = nTmp;
                 }
             }
-            //Xóa các cành ngắn
-            foreach (var nTmp in childNode.Where(nTmp => nTmp != longestNode))
-            {
-                nTmp.DestroyNodeForce();
-            }
             UpdateParentNode(longestNode);
-        }
-
-        public void DestroyNodeForce()
-        {
-            
+            DestroyAnim();
         }
 
         public void UpdateParentNode(Node parentNode)
         {
+            transform.SetParent(parentNode.transform);
             
         }
 
         private void MoveTo(Vector2 locateDiff, float angleDiff)
         {
+            
+        }
+
+        private void DestroyAnim()
+        {
+            transform.DOMoveY(-10,1f).OnComplete(() => Destroy(gameObject));
             
         }
         
