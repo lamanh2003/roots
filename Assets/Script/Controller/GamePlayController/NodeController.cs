@@ -96,7 +96,7 @@ namespace Controller
             var iTransform = instance.transform;
             Vector2 endPoint = (parentNode.transform.position - iTransform.position);
             Vector2 realEndPoint = new Vector2(endPoint.x / iTransform.localScale.x, endPoint.y / iTransform.localScale.y);
-
+            instance.parent = parentNode;
             instance.SetCollider(realEndPoint);
             instance.name = _id.ToString();
             _id++;
@@ -249,8 +249,10 @@ namespace Controller
 
             //if (longestNode != null) longestNode.UpdateParentNode(nodeList[0],parentLongestNode);
             //longestNode.transform.SetParent();
-            nodeList[1].DestroyNode(nodeList[0]);
-
+            if (nodeList[0] == _rootNode)
+                nodeList[1].DestroyNode(nodeList[0]);
+            else
+                nodeList[0].DestroyNode(nodeList[0].parent);
             void ReSpawn(Node current)
             {
                 

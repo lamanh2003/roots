@@ -14,6 +14,7 @@ namespace Base
         public Material highlightMaterial;
 
         public EdgeCollider2D col;
+        public Node parent;
         public List<Node> childNode;
         public float angle;
         public RopeBridge rope;
