@@ -1,36 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using Base;
+using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Data_EditorUtility : MonoBehaviour
 {
     public Transform rootNodeTransform;
-    
+    public Data_Node rootData;
     public int level;
     
     [Button]
     public void CreateLevelData()
     {
-        List<Data_Node> firstLevelNodes = new List<Data_Node>();
-        foreach (Transform childOfRoot in rootNodeTransform)
+        rootData = new Data_Node();
+        Create(rootNodeTransform,rootData);
+        var path = Path.Combine(Application.dataPath, "level", "level_1.json");
+        var json = JsonConvert.SerializeObject(rootData);
+        File.WriteAllText(path,json);
+        void Create(Transform now,Data_Node dNow)
         {
-            Data_Node dataNode_1 = new Data_Node();
-            dataNode_1.dataNodeType = Data_Node_Type.NormalColor;
-            dataNode_1.lineColor = childOfRoot.GetComponent<Node>().lineColor;
-            dataNode_1.childNodes = new List<Data_Node>();
-            Transform transformToCheck = childOfRoot;
-            while (true)
+            for (int i = 0; i < now.childCount; i++)
             {
-                if (transformToCheck.childCount == 0)
-                {
-                    break;
-                }
-
-                foreach (Transform childOfTransformToCheck in transformToCheck)
-                {
-                }
+                var tTmp = now.GetChild(i);
+                var dTmp = new Data_Node(tTmp.GetComponent<Node>().lineColor);
+                dNow.childNodes.Add(dTmp);
+                Create(tTmp,dTmp);
             }
         }
     }
