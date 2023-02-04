@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Controller;
+using DG.Tweening;
 using UnityEngine;
 using Utilities;
 
@@ -9,9 +10,30 @@ namespace Base
 {
     public class Node : MonoBehaviour
     {
-        public List<Node> nextNode;
+        public List<Node> childNode;
+        public float angle;
         public RopeBridge rope;
         private LineColor _lineColor;
+        public int ChildCount => childNode.Count;
+
+        private int deep
+        {
+            get
+            {
+                int rt = 0;
+                return Find(this);
+
+                int Find(Node cur)
+                {
+                    foreach (var nTmp in cur.childNode)
+                    {
+                        rt = Mathf.Max(rt, Find(nTmp));
+                    }
+
+                    return rt + 1;
+                }
+            }
+        }
 
         public LineColor lineColor
         {
@@ -25,8 +47,57 @@ namespace Base
 
         private void Awake()
         {
-            nextNode = new List<Node>();
+            childNode = new List<Node>();
         }
+
+        public void ClaimNode()
+        {
+            
+        }
+        
+        public void DestroyNode(Node parentNode,List<Node> exceptChildNode)
+        {
+            parentNode.childNode.Remove(this);
+            childNode = childNode.Except(exceptChildNode).ToList();
+            parentNode.childNode.AddRange(childNode);
+            if (ChildCount == 0)
+            {
+                return;
+            }
+            Node longestNode = null;
+            int longestNodeDeep = 0;
+            foreach (var nTmp in childNode)
+            {
+                var dTmp = nTmp.deep;
+                if (longestNodeDeep < dTmp)
+                {
+                    longestNodeDeep = dTmp;
+                    longestNode = nTmp;
+                }
+            }
+            //Xóa các cành ngắn
+            foreach (var nTmp in childNode.Where(nTmp => nTmp != longestNode))
+            {
+                nTmp.DestroyNodeForce();
+            }
+            UpdateParentNode(longestNode);
+        }
+
+        public void DestroyNodeForce()
+        {
+            
+        }
+
+        public void UpdateParentNode(Node parentNode)
+        {
+            
+        }
+
+        private void MoveTo(Vector2 locateDiff, float angleDiff)
+        {
+            
+        }
+        
 
         public enum LineColor
         {
@@ -35,6 +106,8 @@ namespace Base
             Green = 2,
             Blue = 3
         }
+
+        
     }
 
     public static class LineColorExtension
@@ -62,6 +135,16 @@ namespace Base
                 return Node.LineColor.Pink;
 
             return (Node.LineColor)((int)lineColor + 1);
+        }
+
+        public static bool ColorEquals(this Node.LineColor color1, Node.LineColor color2)
+        {
+            if (color1 == Node.LineColor.Any || color2 == Node.LineColor.Any)
+            {
+                return true;
+            }
+
+            return color1 == color2;
         }
     }
 }

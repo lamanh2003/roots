@@ -97,6 +97,13 @@ namespace Utilities
             }
         }
 
+        public void UpdateLocate(Vector2 startPoint, Vector2 endPoint)
+        {
+            StartPoint = startPoint;
+            EndPoint = endPoint;
+            dirVec = (EndPoint - StartPoint).normalized;
+        }
+
 
         // Update is called once per frame
         void Update()
