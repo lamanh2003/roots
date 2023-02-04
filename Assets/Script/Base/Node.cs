@@ -22,20 +22,36 @@ namespace Base
         private float orignalWidth;
         public int ChildCount => childNode.Count;
 
+        private List<Node> AllChild
+        {
+            get
+            {
+                List<Node> rt = new List<Node>();
+                Find(this);
+                return rt;
+                void Find(Node cur)
+                {
+                    foreach (var nTmp in cur.childNode)
+                    {
+                        rt.Add(nTmp);
+                    }
+                }
+            }
+        }
+
         public int Deep
         {
             get
             {
-                int rt = 0;
                 return Find(this);
 
                 int Find(Node cur)
                 {
+                    int rt = 0;
                     foreach (var nTmp in cur.childNode)
                     {
                         rt = Mathf.Max(rt, Find(nTmp));
                     }
-
                     return rt + 1;
                 }
             }
@@ -79,8 +95,19 @@ namespace Base
 
         private void DestroyAnim()
         {
-            transform.DOMoveY(-10,1f).OnComplete(() => Destroy(gameObject));
-            
+            var allChild = AllChild;
+            Fade(1f,()=>Destroy(gameObject));
+            foreach (var nTmp in allChild)
+            {
+                nTmp.Fade(1f);
+            }
+
+        }
+
+        private void Fade(float time,Action onComplete = null)
+        {
+            GetComponent<SpriteRenderer>().DOFade(0f, time).OnComplete(()=>onComplete?.Invoke());
+            rope.Fade(1f);
         }
         
 

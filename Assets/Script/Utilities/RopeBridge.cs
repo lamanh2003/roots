@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Base;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -210,6 +211,11 @@ namespace Utilities
                 posNow = pos;
                 posOld = pos;
             }
+        }
+
+        public void Fade(float time)
+        {
+            lineRenderer.DOColor(new Color2(lineRenderer.startColor,lineRenderer.endColor), new Color2(Color.clear,Color.clear), time);
         }
     }
 }
