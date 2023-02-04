@@ -26,6 +26,15 @@ namespace Controller
             match3CheckSave = new List<Node>();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                GamePlayController.Singleton.nodeController.CheckAll();
+
+            }
+        }
+
         private void Start()
         {
             _rootNode = GameObject.FindGameObjectWithTag("rootNode").GetComponent<Node>();
@@ -157,6 +166,7 @@ namespace Controller
                 nodeList[i].ClaimNode();
                 if (i > 0)
                 {
+                    Debug.Log(nodeList[i]);
                     nodeList[i].DestroyNode(nodeList[0],nodeList);
                 }
             }

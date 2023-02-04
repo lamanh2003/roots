@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Base;
+using Controller;
 using UnityEngine;
 using UnityEngine.UI;
 public class DrawPoint : MonoBehaviour
@@ -54,9 +56,7 @@ public class DrawPoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.LogError("touch line");
-        /*
-          LAM SANG LINE
-          RUNG LINE 
-        */
+        
+        GamePlayController.Singleton.nodeController.ChangeNodeColor(collision.GetComponent<Node>());
     }
 }
