@@ -153,7 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 6118399915670607318, guid: c1ec81c8d46ad2d479397d77725d71c4, type: 3}
-  listDrawNodes: []
+  listDrawNodes:
+  - {fileID: 6118399915670607318, guid: c1ec81c8d46ad2d479397d77725d71c4, type: 3}
+  rootNode: {fileID: 976270242}
 --- !u!4 &849749870
 Transform:
   m_ObjectHideFlags: 0
@@ -179,7 +181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 923604750}
   - component: {fileID: 923604749}
-  - component: {fileID: 923604751}
   m_Layer: 0
   m_Name: GamePlayController
   m_TagString: Untagged
@@ -200,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeController: {fileID: 849749869}
+  levelController: {fileID: 2095663554}
 --- !u!4 &923604750
 Transform:
   m_ObjectHideFlags: 0
@@ -213,22 +215,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 849749870}
+  - {fileID: 2095663555}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &923604751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923604748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9464e7c9e12d3b04eb6f5cb4297d029f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
 --- !u!1 &976270241
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,9 +255,11 @@ MonoBehaviour:
   normalMaterial: {fileID: 0}
   highlightMaterial: {fileID: 0}
   col: {fileID: 2660991706594750157}
+  parent: {fileID: 0}
   childNode: []
   angle: 0
   rope: {fileID: 6486159569636209327, guid: c1ec81c8d46ad2d479397d77725d71c4, type: 3}
+  _lineColor: 0
   nodeHeight: 0
   isConnected: 0
 --- !u!212 &976270243
@@ -601,6 +593,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2095663553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095663555}
+  - component: {fileID: 2095663554}
+  m_Layer: 0
+  m_Name: LevelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2095663554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095663553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da91d2b72831e154183f8f70e46e0770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootData: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
+  level: 0
+--- !u!4 &2095663555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095663553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 923604750}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &2660991706594750157
 EdgeCollider2D:

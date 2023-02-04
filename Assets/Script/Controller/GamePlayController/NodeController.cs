@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Base;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 using Random = UnityEngine.Random;
 
@@ -17,8 +18,9 @@ namespace Controller
 
         #endregion
         public List<Node> listDrawNodes;
+        private int _id;
 
-        private Node _rootNode;
+        [FormerlySerializedAs("_rootNode")] public Node rootNode;
 
         private List<Node> match3CheckSave;
 
@@ -26,34 +28,13 @@ namespace Controller
         {
             match3CheckSave = new List<Node>();
         }
+        
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                ClaimAll();
-            }
-        }
-
-        private void Start()
-        {
-            _rootNode = GameObject.FindGameObjectWithTag("rootNode").GetComponent<Node>();
-            AddNode(_rootNode, true, Node.LineColor.Pink);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode.childNode[0], true, Node.LineColor.Pink);
-            AddNode(_rootNode.childNode[0].childNode[0], true, Node.LineColor.Pink);
-        }
-
-        public void AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
+        public Node AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
         {
             var angle = NextAngle(parentNode, isLeftPriority);
-            var color = lineColor ?? (Node.LineColor)Random.Range(1, 4);
-            AddNode(parentNode, angle, color);
+            var color = lineColor ?? (Node.LineColor)Random.Range(1, 6);
+            return AddNode(parentNode, angle, color);
         }
 
         private float NextAngle(Node parentNode, bool isLeftPriority = true)
@@ -73,14 +54,15 @@ namespace Controller
                 }
             }
 
+            float farSize = Mathf.Clamp(parentNode.nodeHeight * 0.5f, 0,10f) * parentNode.nodeHeight%2==0?1:-1;
             return parentNode.ChildCount switch
             {
-                0 => isLeftPriority ? parentNode.angle + 22.5f : parentNode.angle - 22.5f,
-                _ => isLeftPriority ? parentNode.angle - 22.5f : parentNode.angle + 22.5f
-            };
+                0 => isLeftPriority ? parentNode.angle + 22.5f - farSize : parentNode.angle - 22.5f + farSize ,
+                _ => isLeftPriority ? parentNode.angle - 22.5f + farSize : parentNode.angle + 22.5f - farSize 
+            } ;
         }
 
-        private void AddNode(Node parentNode, float angle, Node.LineColor lineColor)
+        private Node AddNode(Node parentNode, float angle, Node.LineColor lineColor)
         {
             var parentPosition = parentNode.transform.position;
             var desLocate = (Vector2)parentPosition + MathUtilities.DegreeToVector2(angle) * LineLength;
@@ -89,16 +71,18 @@ namespace Controller
             instance.angle = angle;
             instance.lineColor = lineColor;
 
-            instance.rope.Init(parentPosition, desLocate, lineColor);
+            instance.rope.Init(parentNode.transform, instance.transform, lineColor);
 
 
             var iTransform = instance.transform;
             Vector2 endPoint = (parentNode.transform.position - iTransform.position);
             Vector2 realEndPoint = new Vector2(endPoint.x / iTransform.localScale.x, endPoint.y / iTransform.localScale.y);
-
+            instance.parent = parentNode;
             instance.SetCollider(realEndPoint);
-            
+            instance.name = _id.ToString();
+            _id++;
             UpdateNodeHeight();
+            return instance;
         }
 
         public void ChangeNodeColor(Node target)
@@ -114,27 +98,39 @@ namespace Controller
         public bool CheckTurn()
         {
             bool[] needCheck = listDrawNodes.ConvertAll(_=>false).ToArray();
+            foreach (var nTmp in listDrawNodes) nTmp._lineColor = nTmp.lineColor.NextLineColor();
+            foreach (var nTmp in listDrawNodes) Debug.Log(nTmp._lineColor);
             match3CheckSave.Clear();
-            var lTmpRoot = CheckMatch3(_rootNode);
+            var lTmpRoot = CheckMatch3(rootNode);
             if (lTmpRoot.Count >= 3)
             {
                 match3CheckSave.AddRange(lTmpRoot);
             }
 
-            CheckNext(_rootNode);
+            CheckNext(rootNode);
 
             for (int i = 0; i < listDrawNodes.Count; i++)
             {
+                foreach (var nTmp in match3CheckSave)
+                {
+                    Debug.Log("#1: "+nTmp.name);
+                }
                 if (match3CheckSave.Contains(listDrawNodes[i]))
                 {
                     needCheck[i] = true;
                 }
             }
-
+            foreach (var nTmp in listDrawNodes) nTmp._lineColor = nTmp.lineColor.PreviousLineColor();
+            for (int i = 0; i < needCheck.Length; i++)
+            {
+                Debug.Log($"#2: {listDrawNodes[i].name} {needCheck[i]}");
+            }
+            
             return needCheck.All(bTmp => bTmp);
 
             void CheckNext(Node currentNode)
             {
+                Debug.Log("#3 "+currentNode.name);
                 foreach (var nTmp in currentNode.childNode)
                 {
                     var lTmp = CheckMatch3(nTmp);
@@ -154,14 +150,14 @@ namespace Controller
         {
             match3CheckSave.Clear();
             Action onCheckAll = default;
-            var lTmpRoot = CheckMatch3(_rootNode);
-            if (lTmpRoot.Count >= 3)
+            var lTmpRoot = CheckMatch3(rootNode);
+            if (lTmpRoot.Count >= 4)
             {
                 match3CheckSave.AddRange(lTmpRoot);
                 onCheckAll += () => ClaimNodeList(lTmpRoot);
             }
 
-            CheckNext(_rootNode);
+            CheckNext(rootNode);
             onCheckAll?.Invoke();
 
             void CheckNext(Node currentNode)
@@ -169,7 +165,7 @@ namespace Controller
                 foreach (var nTmp in currentNode.childNode)
                 {
                     var lTmp = CheckMatch3(nTmp);
-                    if (lTmp.Count >= 3)
+                    if (lTmp.Count >= 4)
                     {
                         match3CheckSave.AddRange(lTmp);
                         onCheckAll += () => ClaimNodeList(lTmp);
@@ -189,7 +185,7 @@ namespace Controller
             {
                 return res;
             }
-
+            res.Add(checkNode);
             foreach (var nTmp in checkNode.childNode.Except(match3CheckSave))
             {
                 if (nTmp.lineColor.ColorEquals(checkNode.lineColor))
@@ -204,7 +200,6 @@ namespace Controller
                 }
             }
 
-            Debug.Log(checkNode.name + " " + res.Count);
 
             return res;
         }
@@ -236,8 +231,10 @@ namespace Controller
 
             //if (longestNode != null) longestNode.UpdateParentNode(nodeList[0],parentLongestNode);
             //longestNode.transform.SetParent();
-            nodeList[1].DestroyNode(nodeList[0]);
-
+            if (nodeList[0] == rootNode)
+                nodeList[1].DestroyNode(nodeList[0]);
+            else
+                nodeList[0].DestroyNode(nodeList[0].parent);
             void ReSpawn(Node current)
             {
                 
@@ -253,7 +250,7 @@ namespace Controller
 
         public void UpdateNodeHeight()
         {
-            Recur(_rootNode,0);
+            Recur(rootNode,0);
             void Recur(Node cur, int deep)
             {
                 deep++;

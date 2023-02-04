@@ -5,6 +5,8 @@ using Controller;
 using UnityEngine;
 using UnityEngine.UI;
 using Base;
+using Utilities;
+
 public class DrawPoint : MonoBehaviour
 {
     public AudioClip touchLineSfx;
@@ -20,6 +22,9 @@ public class DrawPoint : MonoBehaviour
     {
         points = new List<Vector3>();
         StopDraw();
+    }
+    public void Init()
+    {
     }
 
     // Update is called once per frame
@@ -59,6 +64,22 @@ public class DrawPoint : MonoBehaviour
                 GamePlayController.Singleton.nodeController.ChangeNodeColor(nTmp);
             }
             GamePlayController.Singleton.nodeController.ClaimAll();
+            var allChild = GamePlayController.Singleton.nodeController.rootNode.AllFarestNode;
+            allChild.Shuffle();
+            int left = GamePlayController.Singleton.levelController.growNum <= GamePlayController.Singleton.nodeController.rootNode.ChildCount
+                ? GamePlayController.Singleton.levelController.growNum
+                : GamePlayController.Singleton.nodeController.rootNode.ChildCount;
+            int i = 0;
+            while (left-->0)
+            {
+                if (allChild[i].CompareTag("rootNode"))
+                {
+                    left++;
+                    continue;
+                }
+                GamePlayController.Singleton.nodeController.AddNode(allChild[i]);
+                i++;
+            }
         }
         transform.gameObject.SetActive(false);
     }

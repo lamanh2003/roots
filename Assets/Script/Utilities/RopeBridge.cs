@@ -12,8 +12,8 @@ namespace Utilities
     [RequireComponent(typeof(LineRenderer))]
     public class RopeBridge : MonoBehaviour
     {
-        public Vector2 StartPoint;
-        public Vector2 EndPoint;
+        public Transform StartPoint;
+        public Transform EndPoint;
 
         [HideInInspector] public LineRenderer lineRenderer;
         private List<RopeSegment> ropeSegments;
@@ -76,7 +76,7 @@ namespace Utilities
         }
         
 
-        public void Init(Vector2 startPoint, Vector2 endPoint, Node.LineColor lineColor)
+        public void Init(Transform startPoint, Transform endPoint, Node.LineColor lineColor)
         {
             StartPoint = startPoint;
             EndPoint = endPoint;
@@ -85,7 +85,7 @@ namespace Utilities
             StartCoroutine(ChangeGravityForce());
             lineRenderer.startColor = lineColor.ToColor();
             lineRenderer.endColor = lineRenderer.startColor;
-            Vector3 ropeStartPoint = StartPoint;
+            Vector3 ropeStartPoint = StartPoint.position;
             
 
             for (int i = 0; i < segmentLength; i++)
@@ -97,11 +97,6 @@ namespace Utilities
             //col.SetPoints(colPoints);
         }
 
-        public void UpdateLocate(Vector2 startPoint, Vector2 endPoint)
-        {
-            StartPoint = startPoint;
-            EndPoint = endPoint;
-        }
 
 
         // Update is called once per frame
@@ -143,13 +138,13 @@ namespace Utilities
         {
             //Constrant to First Point 
             RopeSegment firstSegment = ropeSegments[0];
-            firstSegment.posNow = StartPoint;
+            firstSegment.posNow = StartPoint.position;
             ropeSegments[0] = firstSegment;
 
 
             //Constrant to Second Point 
             RopeSegment endSegment = ropeSegments[^1];
-            endSegment.posNow = EndPoint;
+            endSegment.posNow = EndPoint.position;
             ropeSegments[^1] = endSegment;
 
             for (int i = 0; i < segmentLength - 1; i++)
