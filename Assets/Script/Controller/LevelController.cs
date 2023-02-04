@@ -8,13 +8,10 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public Data_Node rootData;
-    public int growNum;
-    public int level;
+    public Data_Level config;
     public void Init()
     {
-        Debug.Log("Level " + level + " init");
-        Create(rootData,GamePlayController.Singleton.nodeController.rootNode);
+        Create(config.rootData,GamePlayController.Singleton.nodeController.rootNode);
         
         void Create(Data_Node dNow,Node nNow)
         {

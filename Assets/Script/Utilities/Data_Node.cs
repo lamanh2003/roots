@@ -4,8 +4,7 @@ using Base;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "LevelCreate")]
-public class Data_Node: SerializedScriptableObject
+public class Data_Node
 {
     public Data_Node_Type dataNodeType;
     public Node.LineColor lineColor;

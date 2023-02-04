@@ -6,14 +6,12 @@ using UnityEngine;
 public class Data_EditorUtility : MonoBehaviour
 {
     public Transform rootNodeTransform;
-    public Data_Node rootData;
-    public int level;
+    public Data_Level lvExport;
     
     [Button]
     public void CreateLevelData()
     {
-        string path = "Assets/level/0/";
-        int idx = 0;
+        Data_Node rootData = new Data_Node();
         Create(rootNodeTransform,rootData);
 
         void Create(Transform now,Data_Node dNow)
@@ -21,10 +19,10 @@ public class Data_EditorUtility : MonoBehaviour
             for (int i = 0; i < now.childCount; i++)
             {
                 var tTmp = now.GetChild(i);
-                var dTmp = ScriptableObject.CreateInstance<Data_Node>();
-                AssetDatabase.CreateAsset(dTmp,path+idx+".asset");
-                idx++;
-                dTmp.lineColor = tTmp.GetComponent<Node>().rope.lineRenderer.startColor.GetLineColor();
+                var dTmp = new Data_Node
+                {
+                    lineColor = tTmp.GetComponent<Node>().lineColor
+                };
                 dNow.childNodes.Add(dTmp);
                 Create(tTmp,dTmp);
             }

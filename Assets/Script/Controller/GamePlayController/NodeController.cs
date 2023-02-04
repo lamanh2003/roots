@@ -33,7 +33,8 @@ namespace Controller
         public Node AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
         {
             var angle = NextAngle(parentNode, isLeftPriority);
-            var color = lineColor ?? (Node.LineColor)Random.Range(1, 6);
+            GamePlayController.Singleton.levelController.config.colorCycle.Shuffle();
+            var color = lineColor ?? GamePlayController.Singleton.levelController.config.colorCycle[0];
             return AddNode(parentNode, angle, color);
         }
 

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Base;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
-[Serializable]
-public class Data_Level
+[CreateAssetMenu(menuName = "CreateLevel")]
+public class Data_Level: SerializedScriptableObject
 {
     public int level;
     public Data_Node rootData;
