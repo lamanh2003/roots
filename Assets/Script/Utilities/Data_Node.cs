@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Base;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
-[Serializable]
-public class Data_Node
+[CreateAssetMenu(menuName = "LevelCreate")]
+public class Data_Node: SerializedScriptableObject
 {
     public Data_Node_Type dataNodeType;
     public Node.LineColor lineColor;

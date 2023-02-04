@@ -18,7 +18,7 @@ namespace Base
         public List<Node> childNode;
         public float angle;
         public RopeBridge rope;
-        private LineColor _lineColor;
+        public LineColor _lineColor;
         public int nodeHeight;
 
         private float orignalWidth;
@@ -116,7 +116,7 @@ namespace Base
             rope.Fade(time);
         }
         
-
+        [Serializable]
         public enum LineColor
         {
             Any = 0,
@@ -200,6 +200,14 @@ namespace Base
             }
 
             return color1 == color2;
+        }
+
+        public static Node.LineColor GetLineColor(this Color color)
+        {
+            if (color == new Color(234f / 255f, 77f / 255f, 103f / 255f))
+                return Node.LineColor.Pink;
+            else if (color == new Color(174f / 255f, 207f / 255f, 59f / 255f)) return Node.LineColor.Green;
+            return Node.LineColor.Blue;
         }
     }
 }

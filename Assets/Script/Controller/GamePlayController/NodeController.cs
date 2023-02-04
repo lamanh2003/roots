@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Base;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 using Random = UnityEngine.Random;
 
@@ -19,7 +20,7 @@ namespace Controller
         public List<Node> listDrawNodes;
         private int _id;
 
-        private Node _rootNode;
+        [FormerlySerializedAs("_rootNode")] public Node rootNode;
 
         private List<Node> match3CheckSave;
 
@@ -27,34 +28,13 @@ namespace Controller
         {
             match3CheckSave = new List<Node>();
         }
+        
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                ClaimAll();
-            }
-        }
-
-        private void Start()
-        {
-            _rootNode = GameObject.FindGameObjectWithTag("rootNode").GetComponent<Node>();
-            AddNode(_rootNode, true, Node.LineColor.Pink);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode);
-            AddNode(_rootNode.childNode[0], true, Node.LineColor.Pink);
-            AddNode(_rootNode.childNode[0].childNode[0], true, Node.LineColor.Pink);
-        }
-
-        public void AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
+        public Node AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
         {
             var angle = NextAngle(parentNode, isLeftPriority);
             var color = lineColor ?? (Node.LineColor)Random.Range(1, 4);
-            AddNode(parentNode, angle, color);
+            return AddNode(parentNode, angle, color);
         }
 
         private float NextAngle(Node parentNode, bool isLeftPriority = true)
@@ -81,7 +61,7 @@ namespace Controller
             };
         }
 
-        private void AddNode(Node parentNode, float angle, Node.LineColor lineColor)
+        private Node AddNode(Node parentNode, float angle, Node.LineColor lineColor)
         {
             var parentPosition = parentNode.transform.position;
             var desLocate = (Vector2)parentPosition + MathUtilities.DegreeToVector2(angle) * LineLength;
@@ -101,6 +81,7 @@ namespace Controller
             instance.name = _id.ToString();
             _id++;
             UpdateNodeHeight();
+            return instance;
         }
 
         public void ChangeNodeColor(Node target)
@@ -120,13 +101,13 @@ namespace Controller
 
             foreach (var nTmp in listDrawNodes) nTmp.lineColor = nTmp.lineColor.NextLineColor();
             match3CheckSave.Clear();
-            var lTmpRoot = CheckMatch3(_rootNode);
+            var lTmpRoot = CheckMatch3(rootNode);
             if (lTmpRoot.Count >= 3)
             {
                 match3CheckSave.AddRange(lTmpRoot);
             }
 
-            CheckNext(_rootNode);
+            CheckNext(rootNode);
 
             for (int i = 0; i < listDrawNodes.Count; i++)
             {
@@ -168,14 +149,14 @@ namespace Controller
         {
             match3CheckSave.Clear();
             Action onCheckAll = default;
-            var lTmpRoot = CheckMatch3(_rootNode);
+            var lTmpRoot = CheckMatch3(rootNode);
             if (lTmpRoot.Count >= 3)
             {
                 match3CheckSave.AddRange(lTmpRoot);
                 onCheckAll += () => ClaimNodeList(lTmpRoot);
             }
 
-            CheckNext(_rootNode);
+            CheckNext(rootNode);
             onCheckAll?.Invoke();
 
             void CheckNext(Node currentNode)
@@ -249,7 +230,7 @@ namespace Controller
 
             //if (longestNode != null) longestNode.UpdateParentNode(nodeList[0],parentLongestNode);
             //longestNode.transform.SetParent();
-            if (nodeList[0] == _rootNode)
+            if (nodeList[0] == rootNode)
                 nodeList[1].DestroyNode(nodeList[0]);
             else
                 nodeList[0].DestroyNode(nodeList[0].parent);
@@ -268,7 +249,7 @@ namespace Controller
 
         public void UpdateNodeHeight()
         {
-            Recur(_rootNode,0);
+            Recur(rootNode,0);
             void Recur(Node cur, int deep)
             {
                 deep++;

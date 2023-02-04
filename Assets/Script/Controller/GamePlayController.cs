@@ -7,25 +7,27 @@ namespace Controller
         public static GamePlayController Singleton;
 
         public NodeController nodeController;
-
+        public LevelController levelController;
+        
         private void Awake()
         {
             if (Singleton != null)
             {
                 DestroyImmediate(this);
             }
-            Init();
             Singleton = this;
+            Init();
+
         }
 
         private void Start()
         {
-            
         }
 
         private void Init()
         {
             nodeController.Init();
+            levelController.Init();
         }
     }
 }

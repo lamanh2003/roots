@@ -1,7 +1,9 @@
 using System.IO;
 using Base;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 public class Data_EditorUtility : MonoBehaviour
@@ -13,17 +15,19 @@ public class Data_EditorUtility : MonoBehaviour
     [Button]
     public void CreateLevelData()
     {
-        rootData = new Data_Node();
+        string path = "Assets/level/0/";
+        int idx = 0;
         Create(rootNodeTransform,rootData);
-        var path = Path.Combine(Application.dataPath, "level", "level_1.json");
-        var json = JsonConvert.SerializeObject(rootData);
-        File.WriteAllText(path,json);
+
         void Create(Transform now,Data_Node dNow)
         {
             for (int i = 0; i < now.childCount; i++)
             {
                 var tTmp = now.GetChild(i);
-                var dTmp = new Data_Node(tTmp.GetComponent<Node>().lineColor);
+                var dTmp = ScriptableObject.CreateInstance<Data_Node>();
+                AssetDatabase.CreateAsset(dTmp,path+idx+".asset");
+                idx++;
+                dTmp.lineColor = tTmp.GetComponent<Node>().rope.lineRenderer.startColor.GetLineColor();
                 dNow.childNodes.Add(dTmp);
                 Create(tTmp,dTmp);
             }
