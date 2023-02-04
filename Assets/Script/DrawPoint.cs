@@ -44,6 +44,14 @@ public class DrawPoint : MonoBehaviour
     public void StopDraw()
     {
         GamePlayController.Singleton.nodeController.UnHighlightAll();
+        if (GamePlayController.Singleton.nodeController.CheckTurn())
+        {
+            foreach (var nTmp in GamePlayController.Singleton.nodeController.listDrawNodes)
+            {
+                GamePlayController.Singleton.nodeController.ChangeNodeColor(nTmp);
+            }
+            GamePlayController.Singleton.nodeController.ClaimAll();
+        }
         trans.gameObject.SetActive(false);
         
     }

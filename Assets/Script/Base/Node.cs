@@ -18,6 +18,7 @@ namespace Base
         public float angle;
         public RopeBridge rope;
         private LineColor _lineColor;
+        public int nodeHeight;
 
         private float orignalWidth;
         public int ChildCount => childNode.Count;

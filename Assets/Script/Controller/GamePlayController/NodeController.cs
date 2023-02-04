@@ -31,7 +31,7 @@ namespace Controller
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                CheckAll();
+                ClaimAll();
             }
         }
 
@@ -97,6 +97,8 @@ namespace Controller
             Vector2 realEndPoint = new Vector2(endPoint.x / iTransform.localScale.x, endPoint.y / iTransform.localScale.y);
 
             instance.SetCollider(realEndPoint);
+            
+            UpdateNodeHeight();
         }
 
         public void ChangeNodeColor(Node target)
@@ -109,8 +111,9 @@ namespace Controller
             target.lineColor = lineColor;
         }
 
-        public void CheckTurn()
+        public bool CheckTurn()
         {
+            bool[] needCheck = listDrawNodes.ConvertAll(_=>false).ToArray();
             match3CheckSave.Clear();
             var lTmpRoot = CheckMatch3(_rootNode);
             if (lTmpRoot.Count >= 3)
@@ -119,6 +122,16 @@ namespace Controller
             }
 
             CheckNext(_rootNode);
+
+            for (int i = 0; i < listDrawNodes.Count; i++)
+            {
+                if (match3CheckSave.Contains(listDrawNodes[i]))
+                {
+                    needCheck[i] = true;
+                }
+            }
+
+            return needCheck.All(bTmp => bTmp);
 
             void CheckNext(Node currentNode)
             {
@@ -137,7 +150,7 @@ namespace Controller
             }
         }
 
-        public void CheckAll()
+        public void ClaimAll()
         {
             match3CheckSave.Clear();
             Action onCheckAll = default;
@@ -235,6 +248,20 @@ namespace Controller
             for(int i = 0; i < listDrawNodes.Count; i++)
             {
                 listDrawNodes[i].UnHighlight();
+            }
+        }
+
+        public void UpdateNodeHeight()
+        {
+            Recur(_rootNode,0);
+            void Recur(Node cur, int deep)
+            {
+                deep++;
+                foreach (var nTmp in cur.childNode)
+                {
+                    nTmp.nodeHeight = deep;
+                    Recur(nTmp,deep);
+                }
             }
         }
     }
