@@ -34,6 +34,7 @@ namespace Base
                     foreach (var nTmp in cur.childNode)
                     {
                         rt.Add(nTmp);
+                        Find(nTmp);
                     }
                 }
             }
@@ -77,15 +78,17 @@ namespace Base
             
         }
         
-        public void DestroyNode()
+        public void DestroyNode(Node parentNode)
         {
+            parentNode.childNode.Remove(this);
             DestroyAnim();
         }
 
-        public void UpdateParentNode(Node parentNode)
+        public void UpdateParentNode(Node parentNode, Node oldParentNode)
         {
             transform.SetParent(parentNode.transform);
-            
+            oldParentNode.childNode.Remove(this);
+
         }
 
         private void MoveTo(Vector2 locateDiff, float angleDiff)
@@ -96,10 +99,11 @@ namespace Base
         private void DestroyAnim()
         {
             var allChild = AllChild;
-            Fade(1f,()=>Destroy(gameObject));
+            Debug.Log(allChild.Count);
+            Fade(0.6f,()=>Destroy(gameObject));
             foreach (var nTmp in allChild)
             {
-                nTmp.Fade(1f);
+                nTmp.Fade(0.6f);
             }
 
         }
@@ -107,7 +111,7 @@ namespace Base
         private void Fade(float time,Action onComplete = null)
         {
             GetComponent<SpriteRenderer>().DOFade(0f, time).OnComplete(()=>onComplete?.Invoke());
-            rope.Fade(1f);
+            rope.Fade(time);
         }
         
 

@@ -27,6 +27,8 @@ namespace Utilities
         private float gravityChangeTime;
         private float gravityTotalChangeTime;
 
+        [SerializeField] private Material defaultMat;
+
         private void Awake()
         {
             lineRenderer = GetComponent<LineRenderer>();
@@ -215,7 +217,10 @@ namespace Utilities
 
         public void Fade(float time)
         {
-            lineRenderer.DOColor(new Color2(lineRenderer.startColor,lineRenderer.endColor), new Color2(Color.clear,Color.clear), time);
+            lineRenderer.material = defaultMat;
+            var end = lineRenderer.startColor;
+            end.a = 0;
+            lineRenderer.DOColor(new Color2(lineRenderer.startColor,lineRenderer.endColor), new Color2(end,end), time);
         }
     }
 }

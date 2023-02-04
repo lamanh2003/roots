@@ -38,16 +38,15 @@ namespace Controller
         private void Start()
         {
             _rootNode = GameObject.FindGameObjectWithTag("rootNode").GetComponent<Node>();
-            AddNode(_rootNode,true,Node.LineColor.Pink);
+            AddNode(_rootNode, true, Node.LineColor.Pink);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
             AddNode(_rootNode);
-            AddNode(_rootNode.childNode[0],true,Node.LineColor.Pink);
-            AddNode(_rootNode.childNode[0].childNode[0],true,Node.LineColor.Pink);
-
+            AddNode(_rootNode.childNode[0], true, Node.LineColor.Pink);
+            AddNode(_rootNode.childNode[0].childNode[0], true, Node.LineColor.Pink);
         }
 
         public void AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
@@ -115,11 +114,12 @@ namespace Controller
             match3CheckSave.Clear();
             Action onCheckAll = default;
             var lTmpRoot = CheckMatch3(_rootNode);
-            if (lTmpRoot.Count>=3)
+            if (lTmpRoot.Count >= 3)
             {
                 match3CheckSave.AddRange(lTmpRoot);
                 onCheckAll += () => ClaimNodeList(lTmpRoot);
             }
+
             CheckNext(_rootNode);
             onCheckAll?.Invoke();
 
@@ -148,6 +148,7 @@ namespace Controller
             {
                 return res;
             }
+
             foreach (var nTmp in checkNode.childNode.Except(match3CheckSave))
             {
                 if (nTmp.lineColor.ColorEquals(checkNode.lineColor))
@@ -161,6 +162,7 @@ namespace Controller
                     }
                 }
             }
+
             Debug.Log(checkNode.name + " " + res.Count);
 
             return res;
@@ -168,57 +170,36 @@ namespace Controller
 
         private void ClaimNodeList(List<Node> nodeList)
         {
-            if (nodeList[0] == _rootNode)
+            Node longestNode = null;
+            Node parentLongestNode = null;
+            int longestNodeDeep = 0;
+            for (int i = 0; i < nodeList.Count; i++)
             {
-                for (int i = 0; i < nodeList.Count; i++)
+                nodeList[i].ClaimNode();
+                if (i > 0)
                 {
-                    nodeList[i].ClaimNode();
-                    if (i > 0)
+                    foreach (var nTmp in nodeList[i].childNode)
                     {
-                        Node longestNode = null;
-                        int longestNodeDeep = 0;
-                        foreach (var nTmp in nodeList[i].childNode)
+                        if (match3CheckSave.Contains(nTmp))
+                            continue;
+                        var dTmp = nTmp.Deep;
+                        if (dTmp > longestNodeDeep)
                         {
-                            if (match3CheckSave.Contains(nTmp))
-                                continue;
-                            var dTmp = nTmp.Deep;
-                            if (dTmp > longestNodeDeep)
-                            {
-                                longestNodeDeep = dTmp;
-                                longestNode = nTmp;
-                            }
+                            longestNodeDeep = dTmp;
+                            parentLongestNode = nodeList[i];
+                            longestNode = nTmp;
                         }
-
-                        if (longestNode != null) longestNode.UpdateParentNode(nodeList[0]);
-                        nodeList[i].DestroyNode();
                     }
                 }
             }
-            else
-            {
-                Node longestNode = null;
-                int longestNodeDeep = 0;
-                for (int i = 0; i < nodeList.Count; i++)
-                {
-                    nodeList[i].ClaimNode();
-                    if (i > 0)
-                    {
-                        foreach (var nTmp in nodeList[i].childNode)
-                        {
-                            if (match3CheckSave.Contains(nTmp))
-                                continue;
-                            var dTmp = nTmp.Deep;
-                            if (dTmp > longestNodeDeep)
-                            {
-                                longestNodeDeep = dTmp;
-                                longestNode = nTmp;
-                            }
-                        }
-                    }
-                }
 
-                if (longestNode != null) longestNode.UpdateParentNode(nodeList[0]);
-                nodeList[1].DestroyNode();
+            //if (longestNode != null) longestNode.UpdateParentNode(nodeList[0],parentLongestNode);
+            //longestNode.transform.SetParent();
+            nodeList[1].DestroyNode(nodeList[0]);
+
+            void ReSpawn(Node current)
+            {
+                
             }
         }
         public void UnHighlightAll()
