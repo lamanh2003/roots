@@ -20,7 +20,6 @@ public class DrawController : MonoBehaviour
         if (isDrawing)
         {
             drawPoint.SetPosition(new Vector3(mousePosition.x, mousePosition.y, 0f));
-            drawPoint.DrawLine();
         }
         if (Input.GetMouseButtonDown(0))
         {

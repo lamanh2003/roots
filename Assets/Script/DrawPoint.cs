@@ -10,7 +10,6 @@ using Utilities;
 public class DrawPoint : MonoBehaviour
 {
     public AudioClip touchLineSfx;
-    public LineRenderer line;
     public TrailRenderer trail;
     public SpriteRenderer drawGfx;
     public ParticleSystem rippleFx;
@@ -37,15 +36,9 @@ public class DrawPoint : MonoBehaviour
     {
         transform.position = _position;
     }
-    public void DrawLine()
-    {
-        line.SetPosition(line.positionCount - 1, transform.position);
-    }
     public void StartDraw()
     {
         transform.gameObject.SetActive(true);
-
-        line.positionCount = 0;
 
         GamePlayController.Singleton.nodeController.listDrawNodes.Clear();
 
@@ -54,7 +47,6 @@ public class DrawPoint : MonoBehaviour
     }
     public void StopDraw()
     {
-        line.positionCount = 0;
 
         GamePlayController.Singleton.nodeController.UnHighlightAll();
         if (GamePlayController.Singleton.nodeController.CheckTurn())
@@ -96,7 +88,6 @@ public class DrawPoint : MonoBehaviour
 
         drawGfx.color = color;
         trail.colorGradient = gradient;
-        line.colorGradient = gradient;
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -108,17 +99,7 @@ public class DrawPoint : MonoBehaviour
             {
                 return;
             }
-            if(points.Count == 0)
-            {
-                line.positionCount = 2;
-            }
-            else
-            {
-                line.positionCount += 1;
-            }
             _node.isConnected = true;
-            points.Add(_node.GetCenterPoint());
-            line.SetPosition(line.positionCount - 2, _node.GetCenterPoint());
             GameController.Singleton.soundController.PlaySound(touchLineSfx);
             _node.Highlight();
             GamePlayController.Singleton.nodeController.listDrawNodes.Add(_node);
