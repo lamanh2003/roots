@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Base;
+using Controller;
 using UnityEngine;
 using UnityEngine.UI;
 using Base;
@@ -55,5 +57,6 @@ public class DrawPoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.GetComponent<Node>().Highlight();
+        GamePlayController.Singleton.nodeController.ChangeNodeColor(collision.GetComponent<Node>());
     }
 }

@@ -26,6 +26,14 @@ namespace Controller
             match3CheckSave = new List<Node>();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                CheckAll();
+            }
+        }
+
         private void Start()
         {
             _rootNode = GameObject.FindGameObjectWithTag("rootNode").GetComponent<Node>();
@@ -38,14 +46,14 @@ namespace Controller
             AddNode(_rootNode);
         }
 
-        public void AddNode(Node parentNode, Node.LineColor? lineColor = null)
+        public void AddNode(Node parentNode, bool isLeftPriority = true, Node.LineColor? lineColor = null)
         {
-            var angle = NextAngle(parentNode);
+            var angle = NextAngle(parentNode, isLeftPriority);
             var color = lineColor ?? (Node.LineColor)Random.Range(1, 4);
             AddNode(parentNode, angle, color);
         }
 
-        private float NextAngle(Node parentNode)
+        private float NextAngle(Node parentNode, bool isLeftPriority = true)
         {
             if (parentNode.CompareTag("rootNode"))
             {
@@ -64,8 +72,8 @@ namespace Controller
 
             return parentNode.ChildCount switch
             {
-                0 => parentNode.angle + 22.5f,
-                _ => parentNode.angle - 22.5f
+                0 => isLeftPriority ? parentNode.angle + 22.5f : parentNode.angle - 22.5f,
+                _ => isLeftPriority ? parentNode.angle - 22.5f : parentNode.angle + 22.5f
             };
         }
 
@@ -83,10 +91,10 @@ namespace Controller
 
             Vector2 endPoint = (parentNode.transform.localPosition - instance.transform.localPosition);
             Vector2 realEndPoint = new Vector2(endPoint.x / instance.transform.localScale.x, endPoint.y / instance.transform.localScale.y);
-            
+
             instance.SetCollider(realEndPoint);
         }
-       
+
         public void ChangeNodeColor(Node target)
         {
             ChangeNodeColor(target, target.lineColor.NextLineColor());
@@ -111,6 +119,7 @@ namespace Controller
                 foreach (var nTmp in currentNode.childNode)
                 {
                     var lTmp = CheckMatch3(nTmp);
+                    Debug.Log(lTmp.Count);
                     if (lTmp.Count >= 3)
                     {
                         isValid = true;
@@ -125,7 +134,7 @@ namespace Controller
             }
         }
 
-        public List<Node> CheckMatch3(Node checkNode)
+        private List<Node> CheckMatch3(Node checkNode)
         {
             List<Node> res = new List<Node>();
             if (match3CheckSave.Contains(checkNode))
@@ -135,6 +144,7 @@ namespace Controller
 
             foreach (var nTmp in checkNode.childNode.Except(match3CheckSave))
             {
+                Debug.Log("RUN");
                 if (nTmp.lineColor.ColorEquals(checkNode.lineColor))
                 {
                     var tmpM3 = CheckMatch3(nTmp);
@@ -152,13 +162,57 @@ namespace Controller
 
         private void ClaimNodeList(List<Node> nodeList)
         {
-            for (int i = 0; i < nodeList.Count; i++)
+            if (nodeList[0] == _rootNode)
             {
-                nodeList[i].ClaimNode();
-                if (i > 0)
+                for (int i = 0; i < nodeList.Count; i++)
                 {
-                    nodeList[i].DestroyNode(nodeList[0],nodeList);
+                    nodeList[i].ClaimNode();
+                    if (i > 0)
+                    {
+                        Node longestNode = null;
+                        int longestNodeDeep = 0;
+                        foreach (var nTmp in nodeList[i].childNode)
+                        {
+                            if (match3CheckSave.Contains(nTmp))
+                                continue;
+                            var dTmp = nTmp.Deep;
+                            if (dTmp > longestNodeDeep)
+                            {
+                                longestNodeDeep = dTmp;
+                                longestNode = nTmp;
+                            }
+                        }
+
+                        if (longestNode != null) longestNode.UpdateParentNode(nodeList[0]);
+                        nodeList[i].DestroyNode();
+                    }
                 }
+            }
+            else
+            {
+                Node longestNode = null;
+                int longestNodeDeep = 0;
+                for (int i = 0; i < nodeList.Count; i++)
+                {
+                    nodeList[i].ClaimNode();
+                    if (i > 0)
+                    {
+                        foreach (var nTmp in nodeList[i].childNode)
+                        {
+                            if (match3CheckSave.Contains(nTmp))
+                                continue;
+                            var dTmp = nTmp.Deep;
+                            if (dTmp > longestNodeDeep)
+                            {
+                                longestNodeDeep = dTmp;
+                                longestNode = nTmp;
+                            }
+                        }
+                    }
+                }
+
+                if (longestNode != null) longestNode.UpdateParentNode(nodeList[0]);
+                nodeList[1].DestroyNode();
             }
         }
     }

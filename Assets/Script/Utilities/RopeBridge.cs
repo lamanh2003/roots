@@ -13,25 +13,18 @@ namespace Utilities
     {
         public Vector2 StartPoint;
         public Vector2 EndPoint;
-        private Vector2 dirVec;
 
         [HideInInspector] public LineRenderer lineRenderer;
         private List<RopeSegment> ropeSegments;
         private List<Vector2> colPoints;
-        private float ropeSegLen = 0.0025f;
-        private int segmentLength = 40;
+        private float ropeSegLen = 0.1f;
+        private int segmentLength = 10;
         private float lineWidth = 0.1f;
         private Vector2 forceGravity;
         private Vector2 startGravity;
         private Vector2 endGravity;
         private float gravityChangeTime;
         private float gravityTotalChangeTime;
-
-        private int indexMousePos;
-
-        [SerializeField] private Vector2 followTarget;
-
-        [SerializeField] private float followTaretUpdateSpeed;
 
         private void Awake()
         {
@@ -84,7 +77,6 @@ namespace Utilities
         {
             StartPoint = startPoint;
             EndPoint = endPoint;
-            dirVec = (EndPoint - StartPoint).normalized;
             ropeSegments = new List<RopeSegment>();
             colPoints = new List<Vector2>();
             StartCoroutine(ChangeGravityForce());
@@ -106,7 +98,6 @@ namespace Utilities
         {
             StartPoint = startPoint;
             EndPoint = endPoint;
-            dirVec = (EndPoint - StartPoint).normalized;
         }
 
 
@@ -116,15 +107,6 @@ namespace Utilities
             gravityChangeTime += Time.deltaTime;
             forceGravity = Vector2.Lerp(startGravity, endGravity, gravityChangeTime / gravityTotalChangeTime);
             DrawRope();
-            float xStart = StartPoint.x;
-            float xEnd = EndPoint.x;
-            float currX = followTarget.x;
-
-            float ratio = (currX - xStart) / (xEnd - xStart);
-            if (ratio > 0)
-            {
-                indexMousePos = (int)(segmentLength * ratio);
-            }
         }
 
         private void FixedUpdate()
