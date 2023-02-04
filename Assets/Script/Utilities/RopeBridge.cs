@@ -15,7 +15,7 @@ namespace Utilities
         public Vector2 EndPoint;
         private Vector2 dirVec;
 
-        private LineRenderer lineRenderer;
+        [HideInInspector] public LineRenderer lineRenderer;
         private List<RopeSegment> ropeSegments;
         private List<Vector2> colPoints;
         private float ropeSegLen = 0.0025f;

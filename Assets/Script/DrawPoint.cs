@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Base;
 public class DrawPoint : MonoBehaviour
 {
     public TrailRenderer trail;
@@ -53,10 +54,6 @@ public class DrawPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError("touch line");
-        /*
-          LAM SANG LINE
-          RUNG LINE 
-        */
+        collision.GetComponent<Node>().Highlight();
     }
 }

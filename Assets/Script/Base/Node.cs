@@ -10,11 +10,16 @@ namespace Base
 {
     public class Node : MonoBehaviour
     {
+        public Material normalMaterial;
+        public Material highlightMaterial;
+
         public EdgeCollider2D col;
         public List<Node> childNode;
         public float angle;
         public RopeBridge rope;
         private LineColor _lineColor;
+
+        private float orignalWidth;
         public int ChildCount => childNode.Count;
 
         private int deep
@@ -111,6 +116,31 @@ namespace Base
             points.Add(Vector2.zero);
             points.Add(endPoint);
             col.SetPoints(points);
+        }
+        public void Highlight()
+        {
+            orignalWidth = rope.lineRenderer.startWidth;
+            rope.lineRenderer.material = highlightMaterial;
+
+            AnimationCurve curve = new AnimationCurve();
+            curve.AddKey(0.0f, 1.0f);
+            curve.AddKey(0.5f, 1.8f);
+            curve.AddKey(1.0f, 1.0f);
+
+            rope.lineRenderer.widthCurve = curve;
+            rope.lineRenderer.widthMultiplier = orignalWidth;
+        }
+        public void UnHighlight()
+        {
+            rope.lineRenderer.material = normalMaterial;
+
+            AnimationCurve curve = new AnimationCurve();
+            curve.AddKey(0.0f, 1.0f);
+            curve.AddKey(0.5f, 1.0f);
+            curve.AddKey(1.0f, 1.0f);
+
+            rope.lineRenderer.widthCurve = curve;
+            rope.lineRenderer.widthMultiplier = orignalWidth;
         }
     }
 

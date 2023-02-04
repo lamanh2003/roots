@@ -11,7 +11,7 @@ public class DrawController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        drawPoint.StopDraw();
     }
 
     // Update is called once per frame
