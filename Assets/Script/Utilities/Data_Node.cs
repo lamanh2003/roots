@@ -4,6 +4,7 @@ using Base;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+[Searchable]
 public class Data_Node
 {
     public Data_Node_Type dataNodeType;

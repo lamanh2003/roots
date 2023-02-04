@@ -9318,8 +9318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootNodeTransform: {fileID: 5449255453198016510}
-  rootData: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
-  level: 0
+  lvExport: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
 --- !u!1 &5462057731228412194
 GameObject:
   m_ObjectHideFlags: 0

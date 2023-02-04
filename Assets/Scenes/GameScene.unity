@@ -642,9 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData:
-  - level: 0
-    rootData: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
-    colorCycle: 010000000200000003000000
+  - {fileID: 0}
 --- !u!1 &2095663553
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,9 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da91d2b72831e154183f8f70e46e0770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootData: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
-  growNum: 3
-  level: 0
+  config: {fileID: 11400000, guid: 1f926dbd587322042b89eb4a33966670, type: 2}
 --- !u!4 &2095663555
 Transform:
   m_ObjectHideFlags: 0

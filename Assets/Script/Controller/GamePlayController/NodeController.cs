@@ -98,9 +98,12 @@ namespace Controller
 
         public bool CheckTurn()
         {
+            if (listDrawNodes.Count == 0)
+            {
+                return false;
+            }
             bool[] needCheck = listDrawNodes.ConvertAll(_=>false).ToArray();
             foreach (var nTmp in listDrawNodes) nTmp._lineColor = nTmp.lineColor.NextLineColor();
-            foreach (var nTmp in listDrawNodes) Debug.Log(nTmp._lineColor);
             match3CheckSave.Clear();
             var lTmpRoot = CheckMatch3(rootNode);
             if (lTmpRoot.Count >= 3)
@@ -112,26 +115,17 @@ namespace Controller
 
             for (int i = 0; i < listDrawNodes.Count; i++)
             {
-                foreach (var nTmp in match3CheckSave)
-                {
-                    Debug.Log("#1: "+nTmp.name);
-                }
                 if (match3CheckSave.Contains(listDrawNodes[i]))
                 {
                     needCheck[i] = true;
                 }
             }
             foreach (var nTmp in listDrawNodes) nTmp._lineColor = nTmp.lineColor.PreviousLineColor();
-            for (int i = 0; i < needCheck.Length; i++)
-            {
-                Debug.Log($"#2: {listDrawNodes[i].name} {needCheck[i]}");
-            }
-            
+
             return needCheck.All(bTmp => bTmp);
 
             void CheckNext(Node currentNode)
             {
-                Debug.Log("#3 "+currentNode.name);
                 foreach (var nTmp in currentNode.childNode)
                 {
                     var lTmp = CheckMatch3(nTmp);

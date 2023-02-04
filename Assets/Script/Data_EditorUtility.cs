@@ -12,6 +12,7 @@ public class Data_EditorUtility : MonoBehaviour
     public void CreateLevelData()
     {
         Data_Node rootData = new Data_Node();
+        lvExport.rootData = rootData;
         Create(rootNodeTransform,rootData);
 
         void Create(Transform now,Data_Node dNow)
