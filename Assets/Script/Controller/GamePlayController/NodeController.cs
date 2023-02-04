@@ -93,7 +93,7 @@ namespace Controller
 
 
             var iTransform = instance.transform;
-            Vector2 endPoint = (parentNode.transform.localPosition - iTransform.localPosition);
+            Vector2 endPoint = (parentNode.transform.position - iTransform.position);
             Vector2 realEndPoint = new Vector2(endPoint.x / iTransform.localScale.x, endPoint.y / iTransform.localScale.y);
 
             instance.SetCollider(realEndPoint);
