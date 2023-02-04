@@ -109,8 +109,10 @@ namespace Base
         }
         public void SetCollider(Vector2 endPoint)
         {
-            col.points[0] = Vector2.zero;
-            col.points[1] = endPoint;
+            List<Vector2> points = new List<Vector2>();
+            points.Add(Vector2.zero);
+            points.Add(endPoint);
+            col.SetPoints(points);
         }
     }
 
