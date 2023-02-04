@@ -17,6 +17,7 @@ namespace Controller
 
         #endregion
         public List<Node> listDrawNodes;
+        private int _id;
 
         private Node _rootNode;
 
@@ -97,7 +98,8 @@ namespace Controller
             Vector2 realEndPoint = new Vector2(endPoint.x / iTransform.localScale.x, endPoint.y / iTransform.localScale.y);
 
             instance.SetCollider(realEndPoint);
-            
+            instance.name = _id.ToString();
+            _id++;
             UpdateNodeHeight();
         }
 
@@ -114,6 +116,9 @@ namespace Controller
         public bool CheckTurn()
         {
             bool[] needCheck = listDrawNodes.ConvertAll(_=>false).ToArray();
+            Debug.Log(needCheck.Length);
+
+            foreach (var nTmp in listDrawNodes) nTmp.lineColor = nTmp.lineColor.NextLineColor();
             match3CheckSave.Clear();
             var lTmpRoot = CheckMatch3(_rootNode);
             if (lTmpRoot.Count >= 3)
@@ -125,12 +130,21 @@ namespace Controller
 
             for (int i = 0; i < listDrawNodes.Count; i++)
             {
+                foreach (var nTmp in match3CheckSave)
+                {
+                    Debug.Log("#1: "+nTmp.name);
+                }
                 if (match3CheckSave.Contains(listDrawNodes[i]))
                 {
                     needCheck[i] = true;
                 }
             }
-
+            foreach (var nTmp in listDrawNodes) nTmp.lineColor = nTmp.lineColor.PreviousLineColor();
+            for (int i = 0; i < needCheck.Length; i++)
+            {
+                Debug.Log($"#2: {listDrawNodes[i].name} {needCheck[i]}");
+            }
+            
             return needCheck.All(bTmp => bTmp);
 
             void CheckNext(Node currentNode)
@@ -189,7 +203,7 @@ namespace Controller
             {
                 return res;
             }
-
+            res.Add(checkNode);
             foreach (var nTmp in checkNode.childNode.Except(match3CheckSave))
             {
                 if (nTmp.lineColor.ColorEquals(checkNode.lineColor))
@@ -204,7 +218,6 @@ namespace Controller
                 }
             }
 
-            Debug.Log(checkNode.name + " " + res.Count);
 
             return res;
         }

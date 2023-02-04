@@ -183,6 +183,13 @@ namespace Base
 
             return (Node.LineColor)((int)lineColor + 1);
         }
+        public static Node.LineColor PreviousLineColor(this Node.LineColor lineColor)
+        {
+            if (lineColor == Node.LineColor.Pink)
+                return Node.LineColor.Blue;
+
+            return (Node.LineColor)((int)lineColor - 1);
+        }
 
         public static bool ColorEquals(this Node.LineColor color1, Node.LineColor color2)
         {

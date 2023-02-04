@@ -20,7 +20,7 @@ public class DrawPoint : MonoBehaviour
     }
     public void Init()
     {
-        StopDraw();
+        trans.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
