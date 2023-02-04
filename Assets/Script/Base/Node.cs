@@ -1,24 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Controller;
 using UnityEngine;
 using Utilities;
 
 namespace Base
 {
-    public class Node: MonoBehaviour
+    public class Node : MonoBehaviour
     {
         public List<Node> nextNode;
         public RopeBridge rope;
+        private LineColor _lineColor;
+
+        public LineColor lineColor
+        {
+            get => _lineColor;
+            set
+            {
+                _lineColor = value;
+                rope.UpdateLineColor(value);
+            }
+        }
 
         private void Awake()
         {
             nextNode = new List<Node>();
         }
+
         public enum LineColor
         {
-            Pink,
-            Green,
-            Blue
+            Any = 0,
+            Pink = 1,
+            Green = 2,
+            Blue = 3
         }
     }
 
@@ -37,7 +52,16 @@ namespace Base
                 default:
                     throw new ArgumentOutOfRangeException(nameof(lineColor), lineColor, null);
             }
+
             return Color.black;
+        }
+
+        public static Node.LineColor NextLineColor(this Node.LineColor lineColor)
+        {
+            if (lineColor == Node.LineColor.Blue)
+                return Node.LineColor.Pink;
+
+            return (Node.LineColor)((int)lineColor + 1);
         }
     }
 }
