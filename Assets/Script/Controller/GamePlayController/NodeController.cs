@@ -16,6 +16,7 @@ namespace Controller
         public const float LineLength = 1f;
 
         #endregion
+        public List<Node> listDrawNodes;
 
         private Node _rootNode;
 
@@ -213,6 +214,13 @@ namespace Controller
 
                 if (longestNode != null) longestNode.UpdateParentNode(nodeList[0]);
                 nodeList[1].DestroyNode();
+            }
+        }
+        public void UnHighlightAll()
+        {
+            for(int i = 0; i < listDrawNodes.Count; i++)
+            {
+                listDrawNodes[i].UnHighlight();
             }
         }
     }

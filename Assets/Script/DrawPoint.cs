@@ -31,17 +31,20 @@ public class DrawPoint : MonoBehaviour
     }
     public void StartDraw()
     {
+        GamePlayController.Singleton.nodeController.listDrawNodes.Clear();
+
         rippleFx.Play();
         trans.gameObject.SetActive(true);
-        UpdateColor(Color.red);
+        UpdateColor(Node.LineColor.Pink);
     }
     public void StopDraw()
     {
+        GamePlayController.Singleton.nodeController.UnHighlightAll();
         trans.gameObject.SetActive(false);
     }
-    private void UpdateColor(Color32 _color)
+    private void UpdateColor(Node.LineColor _color)
     {
-        color = _color;
+        color = LineColorExtension.ToColor(_color);
 
         float alpha = 1.0f;
         Gradient gradient = new Gradient();
@@ -53,10 +56,13 @@ public class DrawPoint : MonoBehaviour
         drawGfx.color = color;
         trail.colorGradient = gradient;
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<Node>().Highlight();
-        GamePlayController.Singleton.nodeController.ChangeNodeColor(collision.GetComponent<Node>());
+        if(collision.tag != "rootNode")
+        {
+            collision.GetComponent<Node>().Highlight();
+            GamePlayController.Singleton.nodeController.listDrawNodes.Add(collision.GetComponent<Node>());
+        }
     }
 }
