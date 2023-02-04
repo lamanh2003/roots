@@ -45,6 +45,7 @@ public class DrawPoint : MonoBehaviour
     {
         GamePlayController.Singleton.nodeController.UnHighlightAll();
         trans.gameObject.SetActive(false);
+        
     }
     private void UpdateColor(Node.LineColor _color)
     {

@@ -109,6 +109,34 @@ namespace Controller
             target.lineColor = lineColor;
         }
 
+        public void CheckTurn()
+        {
+            match3CheckSave.Clear();
+            var lTmpRoot = CheckMatch3(_rootNode);
+            if (lTmpRoot.Count >= 3)
+            {
+                match3CheckSave.AddRange(lTmpRoot);
+            }
+
+            CheckNext(_rootNode);
+
+            void CheckNext(Node currentNode)
+            {
+                foreach (var nTmp in currentNode.childNode)
+                {
+                    var lTmp = CheckMatch3(nTmp);
+                    if (lTmp.Count >= 3)
+                    {
+                        match3CheckSave.AddRange(lTmp);
+                    }
+                    else
+                    {
+                        CheckNext(nTmp);
+                    }
+                }
+            }
+        }
+
         public void CheckAll()
         {
             match3CheckSave.Clear();
