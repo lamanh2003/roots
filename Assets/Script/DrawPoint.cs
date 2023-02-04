@@ -66,8 +66,8 @@ public class DrawPoint : MonoBehaviour
             GamePlayController.Singleton.nodeController.ClaimAll();
             var allChild = GamePlayController.Singleton.nodeController.rootNode.AllFarestNode;
             allChild.Shuffle();
-            int left = GamePlayController.Singleton.levelController.growNum <= GamePlayController.Singleton.nodeController.rootNode.ChildCount
-                ? GamePlayController.Singleton.levelController.growNum
+            int left = GamePlayController.Singleton.levelController.config.growNumber <= GamePlayController.Singleton.nodeController.rootNode.ChildCount
+                ? GamePlayController.Singleton.levelController.config.growNumber
                 : GamePlayController.Singleton.nodeController.rootNode.ChildCount;
             int i = 0;
             while (left-->0)

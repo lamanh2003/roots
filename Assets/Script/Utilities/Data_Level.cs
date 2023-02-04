@@ -10,4 +10,5 @@ public class Data_Level: SerializedScriptableObject
     public int level;
     public Data_Node rootData;
     public List<Node.LineColor> colorCycle;
+    public int growNumber;
 }
