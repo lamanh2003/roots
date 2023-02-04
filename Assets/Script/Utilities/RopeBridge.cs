@@ -209,7 +209,7 @@ namespace Utilities
 
         private void FixedUpdate()
         {
-            if (simulateHandle.IsCompleted)
+            /*if (simulateHandle.IsCompleted)
             {
                 simulateHandle.Complete();
                 _simulateJob.startPoint = new float2(StartPoint.position.x, StartPoint.position.y);
@@ -223,7 +223,7 @@ namespace Utilities
             else
             {
                 twoFrameTime += Time.fixedDeltaTime;
-            }
+            }*/
             //Simulate();
         }
 
