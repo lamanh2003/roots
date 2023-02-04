@@ -17,7 +17,7 @@ namespace Base
         private LineColor _lineColor;
         public int ChildCount => childNode.Count;
 
-        private int deep
+        public int Deep
         {
             get
             {
@@ -56,27 +56,8 @@ namespace Base
             
         }
         
-        public void DestroyNode(Node parentNode,List<Node> exceptChildNode)
+        public void DestroyNode()
         {
-            parentNode.childNode.Remove(this);
-            childNode = childNode.Except(exceptChildNode).ToList();
-            parentNode.childNode.AddRange(childNode);
-            if (ChildCount == 0)
-            {
-                return;
-            }
-            Node longestNode = null;
-            int longestNodeDeep = 0;
-            foreach (var nTmp in childNode)
-            {
-                var dTmp = nTmp.deep;
-                if (longestNodeDeep < dTmp)
-                {
-                    longestNodeDeep = dTmp;
-                    longestNode = nTmp;
-                }
-            }
-            UpdateParentNode(longestNode);
             DestroyAnim();
         }
 
