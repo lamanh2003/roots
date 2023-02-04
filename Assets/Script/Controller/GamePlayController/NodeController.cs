@@ -30,7 +30,7 @@ namespace Controller
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                GamePlayController.Singleton.nodeController.CheckAll();
+                CheckAll();
             }
         }
 
@@ -119,6 +119,7 @@ namespace Controller
                 foreach (var nTmp in currentNode.childNode)
                 {
                     var lTmp = CheckMatch3(nTmp);
+                    Debug.Log(lTmp.Count);
                     if (lTmp.Count >= 3)
                     {
                         isValid = true;
@@ -133,7 +134,7 @@ namespace Controller
             }
         }
 
-        public List<Node> CheckMatch3(Node checkNode)
+        private List<Node> CheckMatch3(Node checkNode)
         {
             List<Node> res = new List<Node>();
             if (match3CheckSave.Contains(checkNode))
@@ -143,6 +144,7 @@ namespace Controller
 
             foreach (var nTmp in checkNode.childNode.Except(match3CheckSave))
             {
+                Debug.Log("RUN");
                 if (nTmp.lineColor.ColorEquals(checkNode.lineColor))
                 {
                     var tmpM3 = CheckMatch3(nTmp);
