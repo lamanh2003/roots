@@ -38,10 +38,10 @@ namespace Controller
             AddNode(_rootNode);
         }
 
-        public void AddNode(Node parentNode)
+        public void AddNode(Node parentNode, Node.LineColor? lineColor = null)
         {
             var angle = NextAngle(parentNode);
-            var color = (Node.LineColor)Random.Range(1, 4);
+            var color = lineColor ?? (Node.LineColor)Random.Range(1, 4);
             AddNode(parentNode, angle, color);
         }
 
