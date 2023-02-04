@@ -141,7 +141,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
@@ -212,3 +212,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPoint: {x: 0, y: 0}
   EndPoint: {x: 0, y: 0}
+  followTarget: {x: 0, y: 0}
+  followTaretUpdateSpeed: 0

@@ -1,4 +1,5 @@
-﻿using System;
+﻿//https://www.youtube.com/@jasony4017
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Base;
@@ -16,13 +17,14 @@ namespace Utilities
 
         private LineRenderer lineRenderer;
         private List<RopeSegment> ropeSegments;
-        private float ropeSegLen = 0.05f;
-        private int segmentLength = 20;
+        private float ropeSegLen = 0.0025f;
+        private int segmentLength = 40;
         private float lineWidth = 0.1f;
         private Vector2 forceGravity;
         private Vector2 startGravity;
         private Vector2 endGravity;
         private float gravityChangeTime;
+        private float gravityTotalChangeTime;
 
         private int indexMousePos;
 
@@ -35,6 +37,12 @@ namespace Utilities
             lineRenderer = GetComponent<LineRenderer>();
         }
 
+        public void UpdateLineColor(Node.LineColor lineColor)
+        {
+            lineRenderer.startColor = lineColor.ToColor();
+            lineRenderer.endColor = lineRenderer.startColor;
+        }
+
         private IEnumerator ChangeGravityForce()
         {
             while (true)
@@ -42,7 +50,7 @@ namespace Utilities
                 int rand = Random.Range(0, 4);
                 startGravity = forceGravity;
                 Vector2 tmpGravity = Vector2.zero;
-                float gravityScale = 0.8f;
+                float gravityScale = 0.5f;
                 switch (rand)
                 {
                     case 0:
@@ -59,23 +67,17 @@ namespace Utilities
                         break;
                 }
 
-                gravityChangeTime = 0f;
                 endGravity = tmpGravity * gravityScale;
-                yield return new WaitForSeconds(2f);
+                if (startGravity == endGravity)
+                {
+                    continue;
+                }
+                gravityChangeTime = 0f;
+                gravityTotalChangeTime = Random.Range(1f, 3f);
+                yield return new WaitForSeconds(gravityTotalChangeTime);
             }
         }
-
-        private IEnumerator ChangeHeavyPoint()
-        {
-            while (true)
-            {
-                float rootScale = followTaretUpdateSpeed >= 0 ? 1 : -1;
-                float rand = Random.Range(0.4f, 6f) * (Random.Range(0, 2) == 0 ? -1 : 1);
-                float scale = 0.01f;
-                followTaretUpdateSpeed = rand * scale * rootScale;
-                yield return new WaitForSeconds((1f) / followTaretUpdateSpeed);
-            }
-        }
+        
 
         public void Init(Vector2 startPoint, Vector2 endPoint, Node.LineColor lineColor)
         {
@@ -84,7 +86,6 @@ namespace Utilities
             dirVec = (EndPoint - StartPoint).normalized;
             ropeSegments = new List<RopeSegment>();
             StartCoroutine(ChangeGravityForce());
-            StartCoroutine(ChangeHeavyPoint());
             lineRenderer.startColor = lineColor.ToColor();
             lineRenderer.endColor = lineRenderer.startColor;
             Vector3 ropeStartPoint = StartPoint;
@@ -101,12 +102,7 @@ namespace Utilities
         void Update()
         {
             gravityChangeTime += Time.deltaTime;
-            forceGravity = Vector2.Lerp(startGravity, endGravity, gravityChangeTime / 2f);
-            followTarget += dirVec * (followTaretUpdateSpeed * Time.deltaTime);
-            if (Vector2.Distance(followTarget,StartPoint) >=1f || Vector2.Distance(followTarget,EndPoint) >=1f)
-            {
-                followTaretUpdateSpeed *= -1;
-            }
+            forceGravity = Vector2.Lerp(startGravity, endGravity, gravityChangeTime / gravityTotalChangeTime);
             DrawRope();
             float xStart = StartPoint.x;
             float xEnd = EndPoint.x;
@@ -144,6 +140,8 @@ namespace Utilities
             }
         }
 
+        private const float updateSpeed = 0.35f;
+
         private void ApplyConstraint()
         {
             //Constrant to First Point 
@@ -178,26 +176,15 @@ namespace Utilities
                 Vector2 changeAmount = changeDir * error;
                 if (i != 0)
                 {
-                    firstSeg.posNow -= changeAmount * 0.5f;
+                    firstSeg.posNow -= changeAmount * updateSpeed;
                     ropeSegments[i] = firstSeg;
-                    secondSeg.posNow += changeAmount * 0.5f;
+                    secondSeg.posNow += changeAmount * updateSpeed;
                     ropeSegments[i + 1] = secondSeg;
                 }
                 else
                 {
                     secondSeg.posNow += changeAmount;
                     ropeSegments[i + 1] = secondSeg;
-                }
-
-                //Heavy point
-                if (indexMousePos > 0 && indexMousePos < this.segmentLength - 1 && i == indexMousePos)
-                {
-                    RopeSegment segment = ropeSegments[i];
-                    RopeSegment segment2 = ropeSegments[i + 1];
-                    segment.posNow = new Vector2(followTarget.x, followTarget.y);
-                    segment2.posNow = new Vector2(followTarget.x, followTarget.y);
-                    ropeSegments[i] = segment;
-                    ropeSegments[i + 1] = segment2;
                 }
             }
         }

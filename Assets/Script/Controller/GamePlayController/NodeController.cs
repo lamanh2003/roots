@@ -38,7 +38,23 @@ namespace Controller
             var desLocate = (Vector2)parentPosition + MathUtilities.DegreeToVector2(angle) * LineLength;
             Node instance = Instantiate(nodePrefab, desLocate, Quaternion.identity, parentNode.transform);
             parentNode.nextNode.Add(instance);
+            instance.lineColor = lineColor;
             instance.rope.Init(parentPosition,desLocate,lineColor);
+        }
+
+        public void ChangeNodeColor(Node target)
+        {
+            ChangeNodeColor(target, target.lineColor.NextLineColor());
+        }
+
+        private void ChangeNodeColor(Node target, Node.LineColor lineColor)
+        {
+            target.lineColor = lineColor;
+        }
+
+        public void CheckMatch3()
+        {
+            
         }
     }
 }
