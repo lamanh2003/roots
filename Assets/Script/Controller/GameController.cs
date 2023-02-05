@@ -29,7 +29,7 @@ namespace Controller
         private void Init()
         {
             DontDestroyOnLoad(this);
-
+            Screen.SetResolution(607, 900, fullscreen: false);
             SceneManager.LoadSceneAsync("MainMenu");
         }
     }
